@@ -1,0 +1,115 @@
+@import "components/colors.sass"
+  
+.user_login_box
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100%
+  
+  .user_login_box_container
+    background-color: $color_white
+    width: 100%
+    max-width: 540px
+    padding: 45px 16px
+    border-radius: 4px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    overflow-y: scroll
+    overflow-x: hidden
+      
+  .box_container_title
+    text-align: center
+    h3.box_container_title_txt
+      font-size: 20px
+      font-weight: 600
+  
+  .login_form
+    display: flex
+    justify-content: center
+    max-width: 360px
+    margin: 0 auto
+    form
+      width: 100%
+    
+    .alert-danger_message
+      color: $color_red
+      font-weight: 600
+      padding-top: 8px
+      text-align: center
+    
+    .form_login_field
+      padding-top: 15px
+      padding-bottom: 10px
+      .field_label
+        margin-bottom: 4px
+        label
+          font-size: 14px
+          font-weight: 600
+          
+      .inline_field_input
+        display: flex
+        .field_input:first-child
+          padding-right: 8px        
+          
+      input
+        border: 1px solid $color_grey
+        padding: 8px 12px
+        width: 100%
+        border-radius: 2px
+        &:focus
+          outline: 0
+    
+    .form_login_forgot_pass
+      text-align: right
+      font-size: 12px
+    .form_login_new_user_link
+      text-align: center
+        
+    .form_login_next_button
+      text-align: center
+      margin: 24px 0
+      .form_login_next
+        width: 180px
+        background-color: $color_red
+        color: $color_white
+        border-radius: 4px
+        padding-top: 8px
+        padding-bottom: 8px
+        font-size: 14px
+        &:focus
+          outline: 0 !important
+        input
+          background-color: $color_red
+          cursor: pointer
+          &:focus
+            outline: 0 !important
+        
+    .form_login_login_link
+      text-align: center
+
+    div.form_login_alternatives
+      div.form_login_alternatives_txt
+        text-align: center
+        font-weight: 500
+        font-style: italic
+      div.form_login_via_sns
+        padding-top: 18px 
+        display: flex
+        justify-content: center
+        align-items: center
+        div.form_login_sns_icon
+          padding: 4px 6px
+          
+  .policy_accept
+    padding-top: 15px
+    label
+      display: flex
+      align-items: center
+      justify-content: center
+      .policy_label_link
+        display: flex
+        padding-left: 8px
+        font-size: 12px
+        margin-top: 2px
+        a
+          color: $color_red
+      

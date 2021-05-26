@@ -1,0 +1,47 @@
+div.member_page_box
+  div.member_page_box_container
+    div.member_page_box_container_operation
+      div.member_container_operation_head
+        div.member_container_operation_side
+          div.member_container_operation_title
+            h3.member_container_operation_title_txt.initialize workeasy管理者画面
+
+
+      div.section_member
+        div.member_box_area
+          div.member_box_options
+            div.member_box_title
+              h2.member_box_title_txt 編成チームメンバー一覧
+
+            div.admin_team_right
+              div.admin_team_commands_space
+                = link_to new_admin_organizations_team_member_path
+                  div.admin_team_box_command
+                    button.admin_team_box_command_txt
+                      | チームメンバーの追加画面へ
+
+
+            .table-responsive.member_box_tables
+              table.member_box_options_table
+                thead
+                  tr.bg-info
+                    th.member_box_options_items_head = "メンバー名称"
+                    th.member_box_options_items_head = "役割"
+                    th.member_box_options_items_head = "メンバー削除"
+
+                tbody
+                  - @teammembers.each_with_index do |teammembers, i|
+                    tr
+                      td.member_box_options_items_body = teammembers.user.username
+                      td.member_box_options_items_body = teammembers.position
+                      td.member_box_options_items_body
+                        = link_to admin_organizations_team_member_path(@team.id, @teammembers[i].user_id), method: :delete, data: { confirm: "メンバーを外しますか？" } do
+                          div.member_box_table_command
+                            button.member_box_table_command_txt
+                              = t('destroy')
+
+            div.member_box_options_items
+              = link_to admin_organizations_team_path(@team.id)
+                div.member_box_options_command
+                  button.member_box_options_command_txt
+                    = 'チームメンバー詳細画面へ戻る'

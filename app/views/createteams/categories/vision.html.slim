@@ -1,0 +1,37 @@
+section
+  div.section_search
+    div.seach_question_box
+      = form_for @category, url: createteams_categories_path(:id), method: :get do |f|
+        div.question_box_content
+          div.question_innerbox
+            div.question_box_title
+              h2.question_box_title_txt 現在検討中のシステム開発の要件はある程度かたまってますか？
+
+            div.question_box_options
+              div.question_box_options_items
+                label.question_box_label.tooltiped
+                  div.tooltiped_content
+                    span.tooltipedtext ある程度決まってる
+                  = f.radio_button :id, 1 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/cherry.svg", width: 25, style: "padding: 25px 0")
+                    h4.box_options_item_txt 決まってる
+                label.question_box_label.tooltiped
+                  div.tooltiped_content
+                    span.tooltipedtext お問い合わせの方へ
+                  = f.radio_button :id, 2 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/cherry.svg", width: 25, style: "padding: 25px 0")
+                    h4.box_options_item_txt まだ決まってない
+
+        div.question_box_commands
+          div.box_commands_space
+            = link_to new_createteams_category_path, method: :get
+              div.question_box_command_back
+                button.question_box_command_back_txt
+                  = t 'back'
+            div.question_box_command_next
+              button.question_box_command_next_txt
+                = t 'next'

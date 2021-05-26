@@ -1,0 +1,28 @@
+div style="cursor: auto; font-size: 12px; text-align: left; padding: 15px; line-height: 1.5;"
+  p
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    | 　　　　　　　　プロジェクトに興味があると回答しました"　
+    br/
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    br/
+    | クリエイター氏名：
+    = User.find_by(email: @email).username + "様"
+    br/
+    br/
+    | プロジェクト名称：
+    = Project.find(@project.id).title
+    br/
+    br/
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    br/
+    | workeasy 株式会社｜workeasy運営事務局
+    br/
+    | （旧株式会社ライジングアドバンス）
+    br/
+    | Mail: info@workeasy.jp
+    br/
+    = link_to @signature, @signature
+    br/
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1,0 +1,45 @@
+section
+  div.section_search
+    div.seach_question_box
+      = form_for :question, url: step7_new_workstyle_question_path, method: :get do |f|
+        div.question_box_content
+          div.question_innerbox
+            div.question_box_title
+              h2.question_box_title_txt 穏やかな落ち着いた性格の人と働くのが好きだ
+
+            div.question_box_options
+              div.question_box_options_items
+                label.question_box_label.tooltiped
+                  = f.radio_button :id, 1 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/cherry.svg", width: 35, style: "padding: 25px 0")
+                    h4.box_options_item_txt はい
+                label.question_box_label.tooltiped
+                  = f.radio_button :id, 2 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/cherry.svg", width: 35, style: "padding: 25px 0")
+                    h4.box_options_item_txt そうそうはい
+                label.question_box_label.tooltiped
+                  = f.radio_button :id, 3 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/cherry.svg", width: 35, style: "padding: 25px 0")
+                    h4.box_options_item_txt そうそういいえ
+                label.question_box_label
+                  = f.radio_button :id, 4 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/cherry.svg", width: 35, style: "padding: 25px 0")
+                    h4.box_options_item_txt いいえ
+
+        div.question_box_commands
+          div.box_commands_space
+            = link_to step5_new_workstyle_question_path, method: :get
+              div.question_box_command_back
+                button.question_box_command_back_txt
+                  = t 'back'
+            div.question_box_command_next
+              button.question_box_command_next_txt disabled="true"
+                = t 'next'

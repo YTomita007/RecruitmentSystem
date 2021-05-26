@@ -1,0 +1,14 @@
+div.service_policy
+  div.service_policy_box_container
+    div.box_container_title
+      h3.box_container_title_txt ヘルプページ
+
+    div.service_policy_content
+      = render 'layouts/page1'
+
+div.help_page
+  div.back_button_left
+    = link_to t('to_top'), root_path
+
+  div.back_button_right
+    = link_to t('next'), page2_general_helppages_path

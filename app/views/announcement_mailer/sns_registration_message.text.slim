@@ -1,0 +1,28 @@
+div style="cursor: auto; font-size: 12px; text-align: left; padding: 15px; line-height: 1.5;"
+  p
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    | 　　　　　　　SNSを通じて新規登録がありました　
+    br/
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    br/
+    | 名前：
+    = User.find_by(email: @email).username + "様"
+    br/
+    br/
+    | メールアドレス：
+    = User.find_by(email: @email).email
+    br/
+    br/
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    br/
+    | workeasy 株式会社｜workeasy運営事務局
+    br/
+    | （旧株式会社ライジングアドバンス）
+    br/
+    | Mail: info@workeasy.jp
+    br/
+    = link_to @signature, @signature
+    br/
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━

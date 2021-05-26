@@ -1,0 +1,59 @@
+@import "components/colors.sass"
+
+.user_profile_setting
+  max-width: 1280px
+  margin: 0 auto
+  display: flex
+  justify-content: center
+  .user_profile_setting_container
+    max-width: 810px
+    width: 100%
+    .profile_setting_container_box
+      background-color: $color_white
+      border: 1px solid rgba(0, 0, 0, 0.12)
+      border-radius: 4px
+      margin-bottom: 32px
+      .profile_setting_box_head
+        padding: 16px 32px
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12)
+        .profile_setting_box_head_items
+          display: flex
+          justify-content: flex-start
+          align-items: center
+                
+          .project_head_status
+            background-color: #ffffff
+            &:not(:last-child)
+              margin-bottom: 48px
+            .head_project_status
+              display: flex
+              justify-content: space-between
+              align-items: center
+              padding: 0 8px 8px 8px
+              @media (max-width: 650px)
+                display: block
+              .box_container_project_title
+                h3.box_container_project_title_txt
+                  font-size: 18px
+                  padding-left: 18px
+                  padding-right: 18px
+                  &.initialize
+                    border-left: 5px solid $color_blue
+                  &.negotiation
+                    border-left: 5px solid $color_green
+                  &.prepared
+                    border-left: 5px solid $color_yellow
+                  &.progress
+                    border-left: 5px solid $color_red
+                  &.complete
+                    border-left: 5px solid $color_darkgrey
+
+
+small.required_field_mark
+  display: inline-block
+  vertical-align: middle
+  color: $color_red
+  font-size: 10px
+  margin-bottom: 10px
+  margin-left: 6px
+  font-weight: 100

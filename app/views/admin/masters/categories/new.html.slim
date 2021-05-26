@@ -1,0 +1,55 @@
+div.category_page_box
+  div.category_page_box_container
+    div.category_page_box_container_operation
+      div.category_container_operation_head
+        div.category_container_operation_side
+          div.category_container_operation_title
+            h3.category_container_operation_title_txt.initialize workeasy管理者画面
+
+      div.section_category
+        div.category_box
+          div.category_box_content
+            div.category_box_options
+              div.category_box_title
+                h2.category_box_title_txt 新規登録するカテゴリを入力してください。
+
+              div.table-responsive.category_box_tables
+                table.category_box_options_table
+                  = form_for @category, url: admin_masters_categories_path do |f|
+                    thead
+                      tr.bg-info
+                        th.category_box_options_items_head = "カテゴリ分類"
+                        th.category_box_options_items_head = "カテゴリ名称"
+                        th.category_box_options_items_head = "カテゴリ補助情報"
+                    tbody
+                      td.category_box_options_items_body
+                        = f.select :number, [['ウェブ', 1], ['アプリ', 2], ['その他', 3]]
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :title
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :description
+                    div.category_decide_button_command
+                      button.category_decide_button
+                        = f.submit t('regist')
+
+                /*.form-group
+                  = f.label :classification
+                  br
+                  = f.select :number, [['ウェブ', 1], ['アプリ', 2], ['ソフトウェア', 3], ['その他', 4]]
+                  br
+                  td.category_box_options_items_body
+                    div.category_box_title_table_text
+                  = f.label :title
+                  br
+                  = f.text_field :title
+                  br
+                  .actions
+                    = f.submit t('regist')
+
+              div.category_box_options_items
+                = link_to admin_masters_categories_path
+                  div.category_box_options_command
+                    button.category_box_options_command_txt
+                      = '一覧へ戻る'

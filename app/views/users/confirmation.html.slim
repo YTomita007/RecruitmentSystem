@@ -1,0 +1,58 @@
+div.new_user_registration
+  div.registration_box_container
+    div.box_container_title
+      h3.box_container_title_txt 登録内容確認画面
+      span.box_container_title_email style="display: none;" mail@domain.jp
+
+    div.registration_form
+      = form_for @user do |f|
+        .form-group
+          = f.hidden_field :firstname
+          = f.hidden_field :lastname
+          = f.hidden_field :eng_firstname
+          = f.hidden_field :eng_lastname
+          = f.hidden_field :email
+          = f.hidden_field :role
+          = f.hidden_field :password
+          = f.fields_for :detail, value: @user.id do |d|
+            .form_group
+            = d.hidden_field :id, value: @user.id
+            = d.hidden_field :telephone, value: @user.detail.telephone
+            = d.hidden_field :company, value: @user.detail.company
+            = d.hidden_field :projectmanager, value: @user.detail.projectmanager
+            = d.hidden_field :webdesigner, value: @user.detail.webdesigner
+            = d.hidden_field :uiuxdesigner, value: @user.detail.uiuxdesigner
+            = d.hidden_field :frontendengineer, value: @user.detail.frontendengineer
+            = d.hidden_field :backendengineer, value: @user.detail.backendengineer
+          br
+          = f.label t 'username'
+          h2.text_center = @user.lastname.to_s + " " + @user.firstname.to_s
+          = f.label t 'email'
+          h2.text_center = @user.email.to_s
+          = f.label t 'telephone'
+          h2.text_center = @user.detail.telephone.to_s
+          = f.label t 'company'
+          h2.text_center = @user.detail.company.to_s
+
+        div.pre-scrollable
+          = render 'layouts/policy'
+
+        div.policy_accept
+          = label_tag do
+            input name="policy" type="checkbox" value="1" required="required"
+
+            div.policy_label_link
+              = link_to "プライバシーポリシー", general_policy_index_path
+              p に同意する
+
+        div.registration_modal_button
+          = f.submit t 'regist'
+
+    - if @user.role == 1
+      = link_to enterprise_new_user_path(user: {firstname: @user.firstname, lastname: @user.lastname, eng_firstname: @user.eng_firstname, eng_lastname: @user.eng_lastname, email: @user.email, detail_attributes: {telephone: @user.detail.telephone, company: @user.detail.company}})
+        div.form_registration_back
+          = t 'back'
+    - else
+      = link_to creators_new_user_path(user: {firstname: @user.firstname, lastname: @user.lastname, eng_firstname: @user.eng_firstname, eng_lastname: @user.eng_lastname, email: @user.email, detail_attributes: {telephone: @user.detail.telephone}})
+        div.form_registration_back
+          = t 'back'

@@ -1,0 +1,55 @@
+div.inquiry_page
+  div.inquiry_page_box_container
+    div.box_container_title
+      h3.box_container_title_txt お問い合わせ
+
+    div.inquiry_page_box_form
+      = form_for :inquiry, url: general_inquiry_index_path do |f|
+        div.form_inquiry_field
+          div.field_label
+            = f.label t 'username'
+            span.warning 必須
+          div.field_input.short_input
+            - if @current_user
+              = f.text_field :username, :value => @current_user.username
+            - else
+              = f.text_field :username, placeholder: "例）山田 太郎", required: "", type: "text"
+        div.form_inquiry_field
+          div.field_label
+            = f.label t 'email'
+            span.warning 必須
+          div.field_input.short_input
+            - if @current_user
+              = f.text_field :email, :value => @current_user.email
+            - else
+              = f.text_field :email, placeholder: "例）info@sample.com", required: "", type: "email"
+        div.form_inquiry_field
+          div.field_label
+            = f.label t 'telephone'
+          div.field_input.short_input
+            - if @current_user
+              = f.text_field :telephone, :value => @current_user.detail.telephone
+            - else
+              = f.text_field :telephone, placeholder: "08099999999", type: "text"
+        div.form_inquiry_field
+          div.field_label
+            = f.label '題名'
+            span.warning 必須
+          div.field_input
+            = f.text_field :title, placeholder: "題名を入力してください", required: "", type: "text"
+        div.form_inquiry_field style="align-items: end;"
+          div.field_label 
+            = f.label '内容'
+            span.warning 必須
+          div.field_input
+            = f.text_area :description , placeholder: "お問い合わせの内容を入力してください", required: "", type: "text"
+            div.check_box_info
+              = f.check_box :bcc  
+              = f.label '自分自身にも問い合わせ内容を送信する'
+
+                  
+                  
+        div.inquiry_send_button
+          button.inquiry_page_form_send_button
+            div.actions
+              = f.submit t 'send'

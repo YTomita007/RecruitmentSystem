@@ -1,0 +1,132 @@
+@import "components/colors.sass"
+
+.skill_page_box
+  width: 100%
+  max-width: 1280px
+  margin: 0 auto
+  margin-top: -32px
+
+  .skill_page_box_container
+    background-color: #ffffff
+    border-radius: 8px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    padding: 16px
+    &:not(:last-child)
+      margin-bottom: 48px
+
+    .skill_page_box_container_operation
+      .skill_container_operation_head
+        display: flex
+        justify-content: space-between
+        align-items: center
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12)
+        padding: 0 8px 8px 8px
+        .skill_container_operation_side
+          display: flex
+          align-items: center
+          .skill_container_operation_title
+            h3.skill_container_operation_title_txt
+              font-size: 18px
+              padding-left: 18px
+              padding-right: 18px
+              border-left: 5px solid $color_blue
+
+    .section_skill
+      width: 90%
+      max-width: 1280px
+      margin: 10px auto
+      @media (max-width: 768px)
+        width: 100%
+
+      .skill_box
+        background-color: $color_white
+        border-radius: 8px
+
+        .skill_box_options
+          .skill_box_title
+            text-align: center
+            .skill_box_title_txt
+            font-size: 24px
+            line-height: 1.8
+            padding-bottom: 36px
+
+          .skill_box_options_items
+            border: 2px solid #b9b9b9
+            padding: 19px 0
+            min-width: 155px
+            text-align: center
+            border-radius: 6px
+            cursor: pointer
+            @media (max-width: 768px)
+              margin-bottom: 24px
+
+            .skill_box_options_command
+              button.skill_box_options_command_txt
+                padding-top: 8px
+                padding-bottom: 8px
+                border-radius: 2px
+                cursor: pointer
+                font-weight: 500
+
+          .skill_box_title_text
+            > input
+              border-radius: 2px
+              border: 1px solid
+              width: 250px
+
+          .skill_decide_button_command
+            margin: 10px auto
+            button.skill_decide_button
+              border: 1px solid $color_red
+              border-radius: 2px
+              padding: 8px 16px
+              color: $color_red
+
+          .skill_box_tables
+            border: 2px solid #b9b9b9
+            padding: 19px 0
+            min-width: 155px
+            text-align: center
+            border-radius: 6px
+            @media (max-width: 768px)
+              margin-bottom: 24px
+            .skill_box_options_table
+              text-align: center
+              width: 100%
+              .skill_box_options_items_head
+                background-color: $color_green
+                border: 2px solid #b9b9b9
+                padding: 10px 0
+                min-width: 155px
+                text-align: center
+                border-radius: 6px
+                @media (max-width: 768px)
+                  margin-bottom: 24px
+              .skill_box_options_items_body
+                border: 2px solid #b9b9b9
+                padding: 3px 0
+                min-width: 155px
+                text-align: center
+                border-radius: 6px
+                @media (max-width: 768px)
+                  margin-bottom: 24px
+                .skill_box_table_command
+                  button.skill_box_table_command_txt
+                    padding: 3px 0
+                    border-radius: 2px
+                    cursor: pointer
+                    font-weight: 500
+
+              .skill_box_title_text_table
+                > input
+                  border-radius: 2px
+                  border: 1px solid
+                  width: 100%
+
+              .skill_decide_table_command
+                margin: 10px auto
+                button.skill_decide_button_table
+                  border: 1px solid $color_red
+                  border-radius: 2px
+                  padding: 8px 16px
+                  color: $color_red

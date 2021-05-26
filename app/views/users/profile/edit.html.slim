@@ -1,0 +1,238 @@
+div.user_profile_setting
+  div.user_profile_setting_container
+    = nested_form_for @user do |f|
+      div.profile_setting_form
+        div.profile_setting_container_box
+          div.profile_setting_box_head
+            div.profile_setting_box_head_items
+              div.profile_setting_box_head_title
+                h2.profile_setting_box_head_title_txt 基本情報
+              div.profile_setting_box_head_buttons                
+                div.profile_setting_box_head_button
+                  = link_to users_setting_path(@current_user) do
+                    button.profile_setting_edit data-turbolinks="true" 前の画面へ戻る
+                div.profile_setting_box_head_button
+                  button.profile_setting_save type="submit"
+                    = f.submit t('update')
+
+          div.profile_setting_box_body
+            div.profile_setting_box_body_items
+              div.profile_setting_box_body_item
+                div.profile_setting_item_profile_pic
+                  div.profile_setting_item_profile_pic_box
+                    - if @user.picture.present?
+                      = image_tag @object
+                      = f.file_field :picture, id: "upload_img_input", accept: ".png, .jpeg, .jpg, .gif"
+                    - else
+                      = image_tag "profile_default.png", id: "uploaded_img"
+                      = f.file_field :picture, id: "upload_img_input", accept: ".png, .jpeg, .jpg, .gif"
+                    button.upload_img_btn
+                  div.required_information_view
+                    small.required_field_mark ※
+                    span.public_info_tag 公開されます 
+
+              div.profile_setting_box_body_item
+                div.profile_setting_item_name
+                  div.profile_setting_item_name_label
+                    label.name_label_fullname お名前
+                    span.public_info_tag 公開されます
+                  div.profile_setting_inline_input
+                    = f.text_field :lastname
+                    = f.text_field :firstname
+
+              div.profile_setting_box_body_item
+                div.profile_setting_item_name
+                  div.profile_setting_item_name_label
+                    label.name_label_fullname ローマ字
+                  div.profile_setting_inline_input
+                    = f.text_field :eng_lastname
+                    = f.text_field :eng_firstname
+
+              = f.fields_for :detail, value: @user.id do |d|
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_birthday
+                    div.profile_setting_item_birthday_label
+                      label.name_label_birthday 生年月日
+                      small.required_field_mark ※
+                    div.profile_setting_inline_input
+                      div.profile_setting_inline_birthday
+                        = d.date_select :birthday, prefix:'birthday', prompt:"--", use_month_numbers:true, start_year:Time.now.year, end_year:1900
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_name
+                    div.profile_setting_item_name_label
+                      label.name_label_fullname 性別
+                      small.required_field_mark ※
+                    div.profile_setting_inline_input
+                      - if @user.detail.gender == 1
+                        div.field_radio_input
+                          label.registration_gender
+                            = d.radio_button :gender, 1 do
+                            div.setting_availability_box.available#active
+                              h4.availabilitye_txt 男性
+                        div.field_radio_input
+                          label.registration_gender
+                            = d.radio_button :gender, 2 do
+                            div.setting_availability_box.unavailable
+                              h4.availability_txt 女性
+    
+                      - elsif @user.detail.gender == 2
+                        div.field_radio_input
+                          label.registration_gender
+                            = d.radio_button :gender, 1 do
+                            div.setting_availability_box.available
+                              h4.availabilitye_txt 男性
+                        div.field_radio_input
+                          label.registration_gender
+                            = d.radio_button :gender, 2 do
+                            div.setting_availability_box.unavailable#active
+                              h4.availability_txt 女性
+                              
+                      - else
+                        div.field_radio_input
+                          label.registration_gender
+                            = d.radio_button :gender, 1 do
+                            div.setting_availability_box.available
+                              h4.availabilitye_txt 男性
+                        div.field_radio_input
+                          label.registration_gender
+                            = d.radio_button :gender, 2 do
+                            div.setting_availability_box.unavailable
+                              h4.availability_txt 女性
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_email
+                    div.profile_setting_item_email_label
+                      label.name_label_email メールアドレス
+                    div.profile_setting_input
+                      = f.email_field :email
+
+              = f.fields_for :detail, value: @user.id do |d|
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_telephone
+                    div.profile_setting_item_telephone_label
+                      label.name_label_telephone 電話番号
+                      small.required_field_mark ※
+                    div.profile_setting_input
+                      = d.telephone_field :telephone
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_country
+                    div.profile_setting_item_country_label
+                      label.name_label_country 滞在国
+                    div.profile_setting_input
+                      = d.text_field :country
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_address
+                    div.profile_setting_item_address_label
+                      label.name_label_address 住所
+                    div.profile_setting_input
+                      = d.text_field :address
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_language
+                    div.profile_setting_item_language_label
+                      label.name_label_language 言語
+                      span.public_info_tag 公開されます
+                    div.profile_setting_input
+                      = d.text_field :languages
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_company
+                    div.profile_setting_item_company_label
+                      label.name_label_company 会社名
+                    div.profile_setting_input
+                      = d.text_field :company
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_current_position
+                    div.profile_setting_item_current_position_label
+                      label.name_label_current_position 担当者役割
+                    div.profile_setting_input
+                      = d.text_field :current_position
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_password
+                    div.profile_setting_item_password_label
+                      label.name_label_password パスワード
+                    div.profile_setting_input
+                      = f.password_field :password
+
+              = f.fields_for :detail, value: @user.id do |d|
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_role
+                    div.profile_setting_item_role_label
+                      label.name_label_role クリエイター種別
+                      small.required_field_mark ※
+                      span.public_info_tag 公開されます
+                    div.profile_setting_inline_input
+                      label.profile_setting_role
+                        = d.check_box :projectmanager, :as => :boolean
+                        = t('projectmanager')
+
+                      label.profile_setting_role
+                        = d.check_box :webdesigner, :as => :boolean
+                        = t('webdesigner')
+
+                      label.profile_setting_role
+                        = d.check_box :uiuxdesigner, :as => :boolean
+                        = t('uiuxdesigner')
+
+                      label.profile_setting_role
+                        = d.check_box :frontendengineer, :as => :boolean
+                        = t('frontendengineer')
+
+                      label.profile_setting_role
+                        = d.check_box :backendengineer, :as => :boolean
+                        = t('backendengineer')
+
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_introduction
+                    div.profile_setting_item_introduction_label
+                      label.name_label_introduction 自己紹介
+                      span.public_info_tag 公開されます
+                    div.profile_setting_input
+                      = d.text_area :introduction
+
+= javascript_tag do
+  | $(document).ready(function(){
+
+      $("#birthday_birthday_1i").after("<span class='infra_select'>年</span>");
+      $("#birthday_birthday_2i").after("<span class='infra_select'>月</span>");
+      $("#birthday_birthday_3i").after("<span class='infra_select'>日</span>");
+
+      $(".profile_setting_inline_period_start select:first-child").after("<span class='infra_select'>年</span>");
+      $(".profile_setting_inline_period_end select:first-child").after("<span class='infra_select'>年</span>");
+      $('.profile_setting_cv_period_time span.infra_select').next($('select')).after("<span class='infra_select'>月</span>")
+
+      $(".profile_setting_inline_licdate select:first-child").after("<span class='infra_select'>年</span>");
+      $('.profile_setting_inline_licdate span.infra_select').next($('select')).after("<span class='infra_select'>月</span>")
+      $(".profile_setting_inline_licdate select:last-child").after("<span class='infra_select'>日</span>")
+
+      function display(input) {
+           if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function(event) {
+                 $('#uploaded_img').attr('src', event.target.result);
+              }
+              reader.readAsDataURL(input.files[0]);
+           }
+        }
+        $("#upload_img_input").change(function() {
+           display(this);
+        });
+
+
+
+        function encodeImageFileAsURL(element) {
+          var file = element.files[0];
+          var reader = new FileReader();
+          reader.onloadend = function() {
+            console.log('RESULT', reader.result)
+          }
+          reader.readAsDataURL(file);
+        }
+
+    });

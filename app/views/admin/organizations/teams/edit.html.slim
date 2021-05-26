@@ -1,0 +1,52 @@
+div.admin_team_page_box
+  div.admin_team_page_box_container
+    div.admin_team_page_box_container_operation
+      div.admin_team_container_operation_head
+        div.admin_team_container_operation_side
+          div.admin_team_container_operation_title
+            h3.admin_team_container_operation_title_txt.initialize workeasy管理者画面
+
+      div.section_admin_team
+        div.admin_team_box
+            div.admin_team_box_content
+              = form_for @project, url: admin_organizations_team_path(:id) do |f|
+                div.admin_team_box_options
+                  div.admin_team_box_title
+                    h3.admin_team_box_title_txt プロジェクトのステータス変更
+
+                  div.admin_team_box_options
+                    = f.hidden_field :id
+                    div.admin_team_box_head_title
+                      = f.text_field :title
+
+                    div.admin_team_box_options_label
+                      label.admin_team_box_label
+                        = f.radio_button :status, 1 do
+                        div.admin_team_box_options_item
+                          h4.admin_team_item_txt 商談中
+
+                      label.admin_team_box_label
+                        = f.radio_button :status, 2 do
+                        div.admin_team_box_options_item
+                          h4.admin_team_item_txt 準備中
+
+                      label.admin_team_box_label
+                        = f.radio_button :status, 3 do
+                        div.admin_team_box_options_item
+                          h4.admin_team_item_txt 進行中
+
+                      label.admin_team_box_label
+                        = f.radio_button :status, 9 do
+                        div.admin_team_box_options_item
+                          h4.admin_team_item_txt 完了済
+
+
+                  div.admin_team_decide_button_command
+                    button.admin_team_decide_button type="submit"
+                      = f.submit t('update')
+
+              div.admin_team_box_options_items
+                = link_to admin_organizations_teams_path
+                  div.admin_team_box_options_command
+                    button.admin_team_box_options_command_txt
+                      | チーム一覧画面へ戻る

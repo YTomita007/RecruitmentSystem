@@ -1,0 +1,92 @@
+section
+  div.section_search
+    div.seach_question_box
+      div.search_result_spinner_space#teammember_result
+        div.workstyle_box_content
+          div.workstyle_innerbox
+            div.workstyle_box_title
+              h2.workstyle_box_title_txt あなたの働き方のこだわりはこちらです
+
+            div.workstyle_box_result
+              div.search_result_workstyle
+                div.workstyle_fruit_display
+                  - if @character.id == 1
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_apple.svg", width: 48)
+                    div.fruit_display_desc
+                      p 穏やかな性格。派手ではありませんが堅実にコツコツとした努力や経験を積むことで成長するタイプです。相手を気遣う性格なため、周囲との協調性も高いでしょう。目立ったリーダーではありませんが、実は頼りにされている人が多いのも特徴です。普段は目立たないですが、いざ怒りが沸点に達すると、普段の姿からは信じられないほどキレたりします。
+                  - elsif @character.id == 2
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_peach.svg", width: 48)
+                    div.fruit_display_desc
+                      p 華やかな印象を持つ人が多く、強い求心力を持っています。ストイックな性格で自分にも他人にも厳しく接します。ただし周囲に人がいる場合はしっかりとした姿を見せますが、人目を気にしないところなどでは意外とずぼらな面があるようです。
+                  - elsif @character.id == 3
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_watermelon.svg", width: 48)
+                    div.fruit_display_desc
+                      p 少し変わった性格の人が多く、特にアイディアや創作に関しては優れた才能を持つ人が多いです。賑やかなことや楽しいことが好きで、派手な場所を好みます。意味のないルールやきまりを守るのが苦手で、自由であることを最良とします。
+                  - elsif @character.id == 4
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_strawberry.svg", width: 48)
+                    div.fruit_display_desc
+                      p 行動力はダントツ。遊びの誘いなどフットワーク軽く行動します。また自分に自信があるタイプでポジティブな思考が得意です。一方で慢心することも多く、ついつい自分を良く見せようと見栄を張りがちです。
+                  - elsif @character.id == 5
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_melon.svg", width: 48)
+                    div.fruit_display_desc
+                      p 非常に明るく、行動力に満ちている人が多いです。期待されたり褒められたりすることに弱く、周囲の応援次第では、普段以上のポテンシャルを発揮することもしばしば。一方でただ無鉄砲なわけではなく、クレバーに仕事をこなすことが出来ます。特にマルチタスクでの処理が得意で、時間を有効に使った仕事の進め方を好みます。
+                  - elsif @character.id == 6
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_grape.svg", width: 48)
+                    div.fruit_display_desc
+                      p 人の面倒を見るのが好きな「親分肌」気質で、友人や後輩など多くの人から慕われるタイプです。どっしりとした頼りがいのある雰囲気を持ち、忍耐強く努力するため、多くの人から頼られることが多いでしょう。また自分にも厳しく、常に研鑽を怠りません。一度自分の守るべきものだと認めた場所や相手は、全力で守ろうとする性質があります。
+                  - elsif @character.id == 7
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_pear.svg", width: 48)
+                    div.fruit_display_desc
+                      p 非常に明るく、行動力に満ちている人が多いです。期待されたり褒められたりすることに弱く、周囲の応援次第では、普段以上のポテンシャルを発揮することもしばしば。一方でただ無鉄砲なわけではなく、クレバーに仕事をこなすことが出来ます。特にマルチタスクでの処理が得意で、時間を有効に使った仕事の進め方を好みます。
+                  - elsif @character.id == 8
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_kiwifruit.svg", width: 48)
+                    div.fruit_display_desc
+                      p 楽しいことが大好きで、日々何か楽しいことはないかと興味が尽きない性格です。ですが元々は休むことが好きな性格なため、ずっと動き続けていると、突然エネルギー切れを起こしてしまうことも。一方相手にも「楽しさ」を提供するのが好きで、サプライズやロマンティックな計画を立てるのも得意です。
+                  - elsif @character.id == 9
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_mango.svg", width: 48)
+                    div.fruit_display_desc
+                      p 初対面の人などに対して警戒心が強く、馴染むまでに時間がかかります。その代わり仲良くなってくると、とても人懐っこく愛嬌のあるタイプなので、可愛がられることが多いです。性格に裏表がなく、思ったことは何でも素直に口にします。そのため、人によってはそうした部分がわがままだととられてしまうことも。
+                  - elsif @character.id == 10
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_orange.svg", width: 48)
+                    div.fruit_display_desc
+                      p 協調性が高く、穏やかな性格。人当たりがよく周囲の人からも人気があります。相手によって自分の立ち位置を変えることが出来るので、空気が読めるタイプとも言えます。器用に何でもこなしてしまうように見えますが、実は陰で努力している部分も。ですがそれを自ら周囲に言いふらしたりすることはしない真面目さがあります。
+                  - elsif @character.id == 11
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_bananas.svg", width: 48)
+                    div.fruit_display_desc
+                      p 周囲の人とうまく過ごすことに重点を置いています。人の和を大切にし、少しくらい嫌なことがあってもことを荒立てないよう穏やかに生きていたいと望んでいます。また非常に律儀な性格なため、約束や時間などはきっちりと守ります。人の和を大切にすると聞くと、自分の意見を言わず流されるイメージがありますが、ひつじタイプの人は実はとても冷静な人が多いのも特徴です。
+                  - else
+                    div.fruit_display_img
+                      = image_tag("/assets/fruits/workeasy_pineapple.svg", width: 48)
+                    div.fruit_display_desc
+                      p 生来リーダーシップが強いタイプです。また正義感が強く、ずるや不正を見ると許せず注意してしまうタイプです。自分の意見をしっかり持っている人が多いため、たとえ上司や友人であっても納得できないことには賛同したくないと考えています。
+
+        div.search_result_downpart
+          div.question_box_commands_last
+            div.question_box_command_last
+              - if !@current_user
+                button.question_box_command_last_txt#appear_modal
+                  = t('regist')
+              - else
+                = link_to users_setting_path(@current_user) do
+                  button.question_box_command_last_txt
+                    = t('pro-setting')
+
+          div.question_box_close_command
+            = link_to new_workstyle_question_path
+              div.question_box_close
+                button.box_close_button
+                  = t('reset')
+
+= render 'modal/register'
+= render 'modal/analyzer'

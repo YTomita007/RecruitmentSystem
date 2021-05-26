@@ -1,0 +1,41 @@
+section
+  div.section_search
+    div.seach_question_box
+      = form_for :question, url: result_new_workstyle_question_path, method: :post do |f|
+        div.workstyle_box_content
+          div.workstyle_innerbox
+            div.workstyle_box_title
+              h2.workstyle_box_title_txt 誕生日を入力してください
+            div.workstyle_box_body_item
+              div.workstyle_item_birthday
+                div.workstyle_item_birthday_label
+                  label.name_label_birthday 生年月日
+                div.workstyle_inline_input
+                  div.workstyle_inline_birthday
+                    = f.date_select :birthday, prefix:'birthday', prompt:"--", use_month_numbers:true, start_year:Time.now.year, end_year:1900
+
+        div.question_box_commands
+          div.box_commands_space
+            = link_to step9_new_workstyle_question_path, method: :get
+              div.question_box_command_back
+                button.question_box_command_back_txt
+                  = t 'back'
+            div.question_box_command_next
+              button.question_box_command_next_txt disabled="true"
+                = t 'next'
+
+javascript:
+  $(".workstyle_inline_birthday select").on("change", function() {
+    var selected = false;
+    var year_select = $('#birthday_birthday_1i').val() != 0;
+    var month_select = $('#birthday_birthday_2i').val() != 0;
+    var day_select = $('#birthday_birthday_3i').val() != 0;
+    if( year_select && month_select && day_select ) {
+            selected = true;
+    };
+    if(selected)
+        $('button.question_box_command_next_txt').removeAttr("disabled");
+    else
+        $('button.question_box_command_next_txt').attr('disabled',true);
+  });
+  

@@ -1,0 +1,57 @@
+@import "components/colors.sass"
+
+.profile_setting_box_body
+  .profile_setting_box_body_items
+    .profile_setting_box_body_item
+      
+      .profile_setting_item_profile_pic
+        display: flex
+        align-items: end
+        .profile_setting_item_profile_pic_box
+          button.upload_img_btn
+            background-image: url('editimg.svg')
+            cursor: pointer
+            background-size: 30px
+            background-position: right
+            background-repeat: no-repeat
+            width: 30px
+            height: 30px
+            margin-left: 50px
+          input[type=file]
+            font-size: 18px
+            position: absolute
+            width: 80px
+            opacity: 0
+            cursor: pointer
+          img
+            width: 80px
+            height: 80px
+            border-radius: 50%
+            object-fit: cover
+            margin-bottom: -25px
+
+      .profile_setting_item_name
+        .profile_setting_item_name_label
+          display: flex
+          align-items: center
+          
+      .profile_setting_item_language
+        .profile_setting_item_language_label
+          display: flex
+          align-items: center
+          
+      .profile_setting_item_role
+        @media (max-width: 768px)
+          .profile_setting_inline_input
+            display: block
+            .profile_setting_role
+              margin-bottom: 12px
+        .profile_setting_item_role_label
+          padding-bottom: 8px
+          display: flex
+          align-items: center
+          
+      .profile_setting_item_introduction
+        .profile_setting_item_introduction_label
+          display: flex
+          align-items: center

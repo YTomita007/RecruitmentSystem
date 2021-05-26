@@ -1,0 +1,2 @@
+module Workstyle::QuestionsHelper
+end

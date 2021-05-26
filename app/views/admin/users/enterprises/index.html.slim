@@ -1,0 +1,82 @@
+div.admin_user_page_box
+  div.admin_user_page_box_container
+    div.admin_user_page_box_title
+      h2.admin_user_page_box_title_txt エンタプラス登録一覧
+    div.admin_user_page_box_container_operation
+      #example_wrapper.dataTables_wrapper.form-inline.dt-bootstrap
+        table#enterprise_list.display.dataTable aria-describedby="enterprise_list_info" cellspacing="0" role="grid" style=("width: 100%;") width="100%"
+          thead
+            tr role="row"
+              th.sorting_desc aria-controls="enterprise_list" aria-label=("会員番号") colspan="1" rowspan="1" style=("width: 15px;") tabindex="0"  番号
+              th.sorting aria-controls="enterprise_list" aria-label=("お名前とローマ字") aria-sort="descending" colspan="1" rowspan="1" style=("width: 81px;") tabindex="0"  お名前
+              th.sorting aria-controls="enterprise_list" aria-label=("メールと電話番号") colspan="1" rowspan="1" style=("width: 68px;") tabindex="0"  連絡先
+              th.sorting aria-controls="enterprise_list" aria-label=("職種タグ") colspan="1" rowspan="1" style=("width: 27px;") tabindex="0"  職種
+              / th.sorting aria-controls="example" aria-label=("登録日時") colspan="1" rowspan="1" style=("width: 56px;") tabindex="0"  登録日時
+              th.sorting aria-controls="enterprise_list" aria-label=("アカウントステタス") colspan="1" rowspan="1" style=("width: 55px;") tabindex="0"  ステタス
+          tbody
+            - @enterprises.each_with_index do |index, i|
+              tr role="row"
+                td.sorting_1
+                  = link_to edit_admin_users_alluser_path(@enterprises[i])
+                    = @enterprises[i].id
+                td
+                  = @enterprises[i].username
+                  br
+                  = @enterprises[i].english_name
+                td style="width: 40px"
+                  = @enterprises[i].email
+                  br
+                  = @enterprises[i].detail.telephone
+                td
+                  - if @enterprises[i].detail.projectmanager == true
+                    span.pm_creator PM
+                  - if @enterprises[i].detail.webdesigner == true
+                    span.webdesigner_creator DE
+                  - if @enterprises[i].detail.uiuxdesigner == true
+                    span.uxuidesigner_creator UIUX
+                  - if @enterprises[i].detail.frontendengineer == true
+                    span.frontengineer_creator FE
+                  - if @enterprises[i].detail.backendengineer == true
+                    span.backengineer_creator BE
+                / td
+                /   = @resistdate[i]
+                /   br
+                /   = @resisttime[i]
+                td
+                  - if @enterprises[i].activate == true
+                    span.active 有効
+                  - else
+                    span.inactive 無効
+                  - if @enterprises[i].administrator == true
+                    span.admin_user 管理者
+                  - else
+                    span.simple_user 一般
+
+    div.admin_user_box_options_items
+      = link_to admin_users_adminusers_path
+        div.admin_user_box_options_command
+          button.admin_user_box_options_command_txt
+            = 'ユーザ管理画面トップへ戻る'
+
+
+      link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" /
+      javascript:
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+      script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+      script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"
+      javascript:
+        $(document).ready(function() {
+          var table=$('#enterprise_list').DataTable( {
+            dom: 'Bfrtip',
+            "paging": false,
+            "bInfo": false,
+            buttons: [{
+              exportOptions: {
+                modifier: {
+                  page: 'off'}
+                }
+              }]
+            });
+        });

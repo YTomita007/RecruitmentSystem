@@ -1,0 +1,2 @@
+module General::HelppagesHelper
+end

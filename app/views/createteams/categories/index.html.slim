@@ -1,0 +1,51 @@
+section
+  div.section_search
+    div.seach_question_box
+      = form_for @category, url: createteams_category_path(:id), method: :get do |f|
+        div.question_box_content
+          div.question_innerbox
+            div.question_box_title
+              h2.question_box_title_txt 依頼したいプロジェクトの種類を選択してください
+
+            div.question_box_options
+              div.question_box_options_items
+                label.question_box_label.tooltiped
+                  div.tooltiped_content
+                    span.tooltipedtext インターネット上の様々な情報を、簡単にアクセスできるようにするための仕組み
+                  = f.radio_button :id, 1 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Project_Web.png", width: 90)
+                    h4.box_options_item_txt WEB
+                label.question_box_label.tooltiped
+                  div.tooltiped_content
+                    span.tooltipedtext スマートフォンで利用できるソフトウェア
+                  = f.radio_button :id, 2 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Project_App.png", width: 90)
+                    h4.box_options_item_txt アプリ
+                label.question_box_label.tooltiped
+                  div.tooltiped_content
+                    span.tooltipedtext 該当するものがない場合はこちらを選択してください
+                  = f.radio_button :id, 3 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Common_other.png", width: 90)
+                    h4.box_options_item_txt その他
+                label.question_box_label
+                  = f.radio_button :id, 9 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/cherry.svg", width: 35, style: "padding: 25px 0")
+                    h4.box_options_item_txt 的確に選べない
+
+        div.question_box_commands
+          div.box_commands_space
+            = link_to vision_createteams_categories_path, method: :get
+              div.question_box_command_back
+                button.question_box_command_back_txt
+                  = t 'back'
+            div.question_box_command_next
+              button.question_box_command_next_txt
+                = t 'next'

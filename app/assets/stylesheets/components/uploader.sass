@@ -1,0 +1,108 @@
+@import "components/colors.sass"
+
+.loading
+  background-color: $color_white
+  padding-right: 40px
+  position: relative
+
+  &:after
+    content: ""
+    position: absolute
+    border-radius: 100%
+    right: 6px
+    top: 50%
+    width: 0px
+    height: 0px
+    margin-top: -2px
+    border: 2px solid rgba(255, 255, 255, 0.5)
+    border-left-color: #e6002d
+    border-top-color: #e6002d
+    animation: spin .6s infinite linear, grow .3s forwards ease-out
+
+@keyframes spin
+  to
+    transform: rotate(359deg)
+
+@keyframes grow
+  to
+    width: 14px
+    height: 14px
+    margin-top: -8px
+    right: 13px
+
+.inputfile
+  width: 0.1px
+  height: 0.1px
+  opacity: 0
+  overflow: hidden
+  position: absolute
+  z-index: -1
+
+  + label
+    max-width: 100%
+    font-size: 1.25rem
+    font-weight: 700
+    text-overflow: ellipsis
+    white-space: nowrap
+    cursor: pointer
+    display: flex
+    overflow: hidden
+    padding: 0.625rem 1.25rem
+
+  &:focus + label, &.has-focus + label
+    outline: 1px dotted #000
+    outline: -webkit-focus-ring-color auto 5px
+
+  + label
+    img
+      width: 1em
+      height: 1em
+      vertical-align: middle
+      fill: currentColor
+      margin-right: 8px
+
+    color: $color_red
+    border: 1px solid $color_red
+    background-color: $color_white
+    padding: 0
+
+  + label
+    span, strong
+      padding: 0.625rem 1rem
+
+      /* 10px 20px
+
+    span
+      width: 200px
+      display: flex
+      overflow: hidden
+      font-size: 14px
+      padding-left: 4px
+      vertical-align: middle
+      font-weight: normal
+
+    strong
+      height: 100%
+      color: $color_red
+      background-color: $color_white
+      border-right: 1px solid $color_red
+      display: flex !important
+      align-items: center
+      font-size: 14px
+      font-weight: normal
+
+@media screen and (max-width: 50em)
+  .inputfile + label strong
+    display: block
+    
+    
+div.upload_info_details
+  margin-top: 32px
+  background-color: $color_lightgrey
+  padding: 16px
+  border-radius: 2px
+  ul.upload_info_limitation
+    list-style: disc
+    padding: 0 16px
+    li.upload_info_limitation_item
+      color: $color_black

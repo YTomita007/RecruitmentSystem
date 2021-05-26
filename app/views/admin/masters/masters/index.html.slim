@@ -1,0 +1,35 @@
+div.admin_user_page_box
+  div.admin_user_page_box_container
+    div.admin_user_page_box_title
+      h2.admin_user_page_box_title_txt 編集したいマスタを選んでください
+
+    div.admin_user_page_box_container_operation
+      div.admin_container_categories_page
+
+        div.admin_container_category_page
+          div.admin_container_category_item.softblue
+            = link_to admin_masters_categories_path
+              div.admin_category_item_button
+                img src="https://cdn.pixabay.com/photo/2017/03/19/03/48/material-icon-2155442_1280.png"
+                h4.admin_category_item_button_title カテゴリマスタ
+
+        div.admin_container_category_page
+          div.admin_container_category_item.softblue
+            = link_to admin_masters_fruits_path
+              div.admin_category_item_button
+                img src="https://cdn.pixabay.com/photo/2017/03/19/03/48/material-icon-2155442_1280.png"
+                h4.admin_category_item_button_title フルーツマスタ
+
+        div.admin_container_category_page
+          div.admin_container_category_item.softblue
+            = link_to admin_masters_skills_path
+              div.admin_category_item_button
+                img src="https://cdn.pixabay.com/photo/2017/03/19/03/48/material-icon-2155442_1280.png"
+                h4.admin_category_item_button_title スキルマスタ
+
+
+
+      div.admin_user_page_buttom_option
+        div.admin_user_page_buttom_button_back
+          = link_to admin_root_path
+            button.admin_page_button_back 管理画面トップへ戻る

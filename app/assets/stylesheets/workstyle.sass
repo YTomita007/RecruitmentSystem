@@ -1,0 +1,73 @@
+@import "components/colors.sass"
+
+div.workstyle_box_content	
+  padding-top: 48px
+  padding-bottom: 28px
+  max-width: 735px	
+  margin: 0 auto
+  div.workstyle_innerbox
+    max-width: 735px
+    margin: 0 auto	
+    div.workstyle_box_title
+      text-align: center
+      padding: 24px 0 32px	
+      h2.workstyle_box_title_txt
+        font-size: 20px
+        font-weight: 600
+        
+    div.workstyle_box_body_item
+      padding: 12px 0
+      div.workstyle_item_birthday
+        div.workstyle_inline_input
+          padding-top: 4px
+          div.workstyle_inline_birthday
+            select
+              padding-top: 8px
+              padding-bottom: 8px
+              padding-left: 8px
+              text-align: left
+              border-radius: 2px
+              border: 1px solid $color_darkgrey
+              background: $color_white
+              background-image: url('select.png')
+              background-position: center right
+              background-size: contain
+              background-repeat: no-repeat
+              -webkit-appearance: none
+              -moz-appearance: none
+              appearance: none
+              &::-ms-expand
+                display: none
+              &:first-child
+                min-width: 115px
+              &:not(:first-child)
+                min-width: 82px
+      
+    div.workstyle_box_result
+      background-color: $color_lightgrey
+      border-radius: 7px
+      display: flex
+      flex-wrap: wrap
+      justify-content: space-between
+      padding: 18px 24px
+      margin: 0 8px
+      div.search_result_workstyle
+        div.workstyle_fruit_display
+          div.fruit_display_img
+            img
+              margin: 0 auto	
+              padding-bottom: 22px
+              animation: swing ease-in-out 1s infinite alternate
+
+@keyframes swing
+  0%
+    transform: rotate(3deg)
+  100%
+    transform: rotate(-3deg)
+
+div.workstyle_animation
+  label
+    transition: transform .2s
+    &:hover
+      transform: scale(1.11)
+  

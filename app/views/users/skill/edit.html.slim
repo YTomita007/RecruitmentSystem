@@ -1,0 +1,37 @@
+div.user_profile_setting
+  div.user_profile_setting_container
+    = nested_form_for @user, url: users_skill_path do |f|
+      div.profile_setting_form
+        div.profile_setting_container_box#skills_box
+          = f.fields_for :memberskills, value: @user do |sk|
+            div.profile_setting_box_head
+              div.profile_setting_box_head_items
+                div.profile_setting_box_head_title
+                  h2.profile_setting_box_head_title_txt
+                   | スキル
+                   small.required_field_mark ※
+                   span.public_info_tag 公開されます
+                div.profile_setting_box_head_buttons                
+                 div.profile_setting_box_head_button
+                   = link_to users_setting_path(@current_user) do
+                     button.profile_setting_edit data-turbolinks="true" 前の画面へ戻る
+                 div.profile_setting_box_head_button
+                   button.profile_setting_save type="submit"
+                     = f.submit t('update')
+
+            div.profile_setting_box_body
+              div.profile_setting_box_body_items
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_skill
+                    div.profile_setting_input
+                      = sk.text_field :title, type: "hidden", class: "vue_hidden_skills", value: ""
+                    div.vue_skill#app
+
+
+= javascript_tag do
+  | $( ".profile_setting_save" ).mouseover( function() {
+       var data = $("span.multiselect__tag span").map(function(){
+            return this.innerHTML;
+        }).get();
+      $('.vue_hidden_skills').val(data);
+     });

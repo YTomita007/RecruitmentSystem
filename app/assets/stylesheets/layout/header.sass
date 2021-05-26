@@ -1,0 +1,391 @@
+@import "components/colors.sass"
+
+header
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12)
+  background-color: $color_white
+
+  .header
+    width: 100%
+    max-width: 1280px
+    margin: 0 auto
+    background-color: $color_white
+
+    .header_items
+      display: flex
+      align-items: center
+      height: 70px
+      padding: 0 1.5rem
+      margin-left: auto
+      margin-right: auto
+      justify-content: space-between
+      background-color: $color_white
+      @media (max-width: 768px)
+        padding: 0 1rem
+
+      .header_item
+        z-index: 100
+
+        &#user_display_memnu
+          visibility: visible
+          display: block
+          cursor: pointer
+          @media (max-width: 560px)
+            visibility: hidden
+            display: none
+
+        .header_logo
+
+        .header_account
+          display: flex
+          align-items: center
+
+          .mnic
+            position: relative
+            padding: 0 0 0 8px
+
+            &:before, &:after
+              display: block
+              position: absolute
+              content: ""
+              top: 0
+              left: 0
+
+          .arw_b:before
+            top: 4px
+            width: 8px
+            height: 8px
+            border-bottom: 2px solid $color_darkgrey
+            border-right: 2px solid $color_darkgrey
+            -webkit-transform: rotate(45deg)
+            transform: rotate(45deg)
+            transition: 0.5s
+
+          .arw_t:before
+            top: 4px
+            width: 8px
+            height: 8px
+            border-top: 2px solid $color_darkgrey
+            border-right: 2px solid $color_darkgrey
+            -webkit-transform: rotate(-45deg)
+            transform: rotate(-45deg)
+            transition: 0.5s
+
+          .registration
+            a
+              margin-right: 12px
+          .profile_pic
+            img
+              width: 50px
+              height: 50px
+              border-radius: 50%
+              object-fit: cover
+
+          .profile_name
+            padding-left: 12px
+            padding-right: 12px
+            max-width: 200px
+            font-size: 14px
+            .user_display_role
+              height: 25px
+              .role_name
+                color: $color_darkgrey
+                font-size: 12px
+                height: 24px
+              .company_name
+                color: $color_darkgrey
+                font-size: 12px
+                height: 24px
+
+              .overlay
+                background: $color_white
+                border: 1px solid $color_grey
+                border-radius: 2px
+                position: relative
+                top: 4px
+                right: 63px
+                width: 225px
+                height: auto
+                opacity: 0
+                visibility: hidden
+                transition: opacity .35s, visibility .35s, height .35s
+                z-index: 99
+                overflow: auto
+                max-height: auto
+                padding: 16px
+                text-align: center
+                &.open
+                  opacity: .99
+                  visibility: visible
+                  height: auto
+
+              .overlay-menu
+                .menu_contents
+                  .menu_content
+                    .menu_item
+                      padding-top: 8px
+                      padding-bottom: 8px
+                      .menu_item_box
+                        display: flex
+                        justify-content: left
+                        align-items: center
+
+                      .menu_start_search
+                        width: 100%
+                        border-radius: 2px
+                        padding-top: 8px
+                        padding-bottom: 8px
+                        background-color: $color_red
+                        color: $color_white
+                      .menu_mypage
+                        width: 100%
+                        border-radius: 2px
+                        border: 1px solid $color_grey
+                        padding-top: 4px
+                        padding-bottom: 4px
+                        height: 34px
+                      .menu_item_box_icon
+                        width: 25px
+                        padding-left: 4px
+                      .menu_item_box_text
+                        padding-left: 12px
+
+            .display_indicator
+              height: 25px
+              .overlay
+                background: $color_white
+                border: 1px solid $color_grey
+                border-radius: 2px
+                position: relative
+                top: 4px
+                right: 63px
+                width: 225px
+                height: auto
+                opacity: 0
+                visibility: hidden
+                transition: opacity .35s, visibility .35s, height .35s
+                z-index: 99
+                overflow: auto
+                max-height: auto
+                padding: 16px
+                text-align: center
+                &.open
+                  opacity: .99
+                  visibility: visible
+                  height: auto
+
+              .overlay-menu
+                .menu_contents
+                  .menu_content
+                    .menu_item
+                      padding-top: 8px
+                      padding-bottom: 8px
+                      .menu_item_box
+                        display: flex
+                        justify-content: left
+                        align-items: center
+
+                      .menu_start_search
+                        width: 100%
+                        border-radius: 2px
+                        padding-top: 8px
+                        padding-bottom: 8px
+                        background-color: $color_red
+                        color: $color_white
+                      .menu_mypage
+                        width: 100%
+                        border-radius: 2px
+                        border: 1px solid $color_grey
+                        padding-top: 4px
+                        padding-bottom: 4px
+                        height: 34px
+                      .menu_item_box_icon
+                        width: 25px
+                        padding-left: 4px
+                      .menu_item_box_text
+                        padding-left: 12px
+
+
+            .profile_name_txt
+              color: $color_black
+              padding-left: 8px
+
+
+        &#user_display_mbmemnu
+          visibility: hidden
+          display: none
+          @media (max-width: 560px)
+            visibility: visible
+            display: block
+            height: 100vh
+            overflow-y: hidden
+            .button_container
+              position: absolute
+              right: 0px
+              top: 0px
+              margin: 24px 22px 0 0
+              height: 18px
+              width: 36px
+              cursor: pointer
+              z-index: 100
+              transition: opacity .25s ease
+
+              &:hover
+                opacity: .7
+
+              &.active_mbmenu
+                .top
+                  transform: translateY(11px) translateX(0) rotate(45deg)
+                  -webkit-transform: translateY(11px) translateX(0) rotate(45deg)
+                  background: #343434
+
+                .middle
+                  opacity: 0
+                  background: #343434
+
+                .bottom
+                  transform: translateY(-11px) translateX(0) rotate(-45deg)
+                  -webkit-transform: translateY(-11px) translateX(0) rotate(-45deg)
+                  background: #343434
+
+              span
+                background: #343434
+                border: none
+                height: 3px
+                width: 100%
+                position: absolute
+                top: 0
+                left: 0
+                transition: all .35s ease
+                cursor: pointer
+
+                &:nth-of-type(2)
+                  top: 11px
+
+                &:nth-of-type(3)
+                  top: 22px
+
+            .opener
+              width: 48px
+              height: 46px
+              display: block
+              position: fixed
+              top: 0
+              right: 0
+              left: auto
+              z-index: 9999
+              background: none
+
+            #burger
+              span
+                display: inline-block
+                box-sizing: border-box
+                -webkit-transition: all .4s
+                transition: all .4s
+                width: 28px
+                height: 2px
+                position: absolute
+                left: 10px
+                background-color: #000
+
+                &:nth-of-type(1)
+                  top: 12px
+
+                &:nth-of-type(2)
+                  top: 22px
+
+                &:nth-of-type(3)
+                  bottom: 12px
+
+              &:focus span
+                &:nth-of-type(1)
+                  -webkit-transform: translateY(10px) rotate(-45deg) !important
+                  transform: translateY(10px) rotate(-45deg) !important
+
+                &:nth-of-type(2)
+                  opacity: 0
+                  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"
+
+                &:nth-of-type(3)
+                  -webkit-transform: translateY(-10px) rotate(45deg)
+                  transform: translateY(-10px) rotate(45deg)
+
+          .covered
+            background: rgba(0, 0, 0, 0.2) !important
+            height: 100vh
+            position: absolute
+            top: 70px
+            left: -24px
+            width: 120%
+            z-index: 90
+
+          .mobile_overlay
+            background: $color_white
+            position: absolute
+            top: 70px
+            right: 0px
+            width: 65%
+            height: 100%
+            opacity: 0
+            visibility: hidden
+            transition: opacity .35s, visibility .35s, height .35s
+            z-index: 99
+            overflow: auto
+            max-height: 100vh
+
+            &.open_mbmenu
+              opacity: .99
+              visibility: visible
+              height: 100%
+              @media (max-width: 560px)
+                padding: 0 18px
+
+              li
+                animation: .5s ease forwards
+                animation-delay: .35s
+                opacity: 1
+
+            nav
+              position: relative
+              height: 100%
+              font-size: 18px
+              text-align: center
+              @media (max-width: 560px)
+                font-size: 14px
+
+              .mboverlay_item
+                max-width: 235px
+                margin: 0 auto
+                .profile_pic
+                  img
+                    width: 65px
+                    height: 65px
+                    border-radius: 50%
+                    object-fit: cover
+                    margin: 12px auto
+                .role_name
+                  color: $color_darkgrey
+                  font-size: 12px
+                .menu_start_search
+                  width: 100%
+                  border-radius: 2px
+                  padding-top: 8px
+                  padding-bottom: 8px
+                  background-color: $color_red
+                  color: $color_white
+                  margin: 18px auto
+                .menu_mypage
+                  width: 100%
+                  border-radius: 2px
+                  border: 1px solid $color_grey
+                  padding-top: 8px
+                  padding-bottom: 8px
+                .menu_item_box_icon
+                  text-align: center
+                .menu_item_box_text
+                  padding-left: 12px
+                  width: calc(100% - 40px)
+                .menu_item_box
+                  display: flex
+                  justify-content: left
+                  align-items: center
+                  margin: 24px 0px

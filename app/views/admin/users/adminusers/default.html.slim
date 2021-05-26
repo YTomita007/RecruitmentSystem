@@ -1,0 +1,60 @@
+div.user_profile_setting
+  div.user_profile_setting_container
+    = form_for @user, method: :patch, url: admin_users_adminuser_path(@user), data: { confirm: "本当に初期化するユーザは正しいですか？" }  do |f|
+      div.profile_setting_form
+        div.profile_setting_container_box#skills_box
+          div.profile_setting_box_head
+            div.profile_setting_box_head_items
+              div.profile_setting_box_head_title
+                h2.profile_setting_box_head_title_txt
+                 | 初期化したいユーザを選んでください
+                 br
+                 |（テスト用のユーザのみにしてください）
+              div.profile_setting_box_head_button
+                = link_to admin_users_adminusers_path do
+                  button.profile_setting_edit data-turbolinks="true" 初期化を中止する
+              div.profile_setting_box_head_button
+                button.profile_setting_save
+                  .actions
+                    = f.submit t('update')
+
+          div.profile_setting_box_body
+            div.profile_setting_box_body_items
+              div.profile_setting_box_body_item
+                div.profile_setting_item_skill
+                  div.profile_setting_input
+                    = f.label @user.username
+                    = f.hidden_field :picture, value: nil
+                    = f.hidden_field :picture_url, value: nil
+                    = f.hidden_field :english_name, value: nil
+                    = f.fields_for :detail, value: @user.id do |d|
+                      = d.hidden_field :telephone, value: nil
+                      = d.hidden_field :birthday, value: nil
+                      = d.hidden_field :gender, value: nil
+                      = d.hidden_field :character_id, value: nil
+                      = d.hidden_field :character_name, value: nil
+                      = d.hidden_field :company, value: nil
+                      = d.hidden_field :current_position, value: nil
+                      = d.hidden_field :address, value: nil
+                      = d.hidden_field :country, value: nil
+                      = d.hidden_field :languages, value: nil
+                      = d.hidden_field :introduction, value: nil
+                      = d.hidden_field :availability, value: true
+                      = d.hidden_field :projectmanager, value: false
+                      = d.hidden_field :webdesigner, value: false
+                      = d.hidden_field :uiuxdesigner, value: false
+                      = d.hidden_field :frontendengineer, value: false
+                      = d.hidden_field :backendengineer, value: false
+                      = d.hidden_field :schedule, value: nil
+                      = d.hidden_field :hourly_rate, value: nil
+                      = d.hidden_field :communication_tool, value: nil
+                      = d.hidden_field :website, value: nil
+                      = d.hidden_field :payment_address, value: nil
+                    = f.fields_for :careers, value: @user.id do |c|
+                      = c.hidden_field :id
+                    = f.fields_for :licenses, value: @user.id do |l|
+                      = l.hidden_field :id
+                    = f.fields_for :paperclip, value: @user.id do |pp|
+                      = pp.hidden_field :id
+                    = f.fields_for :memberskills, value: @user.id do |ms|
+                      = ms.hidden_field :id

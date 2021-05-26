@@ -1,0 +1,437 @@
+- if flash.any?
+  .alert.alert-danger.pr-0
+    ul.mb-0.pl-3
+      - flash.each do |_message_type, message|
+        div.message_alert
+          div.message_alert_positive
+            div.message_alert_content
+              div.message_alert_check_icon
+                svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve"
+                  g id="check_icon"
+                    path style="fill:#14A83B" d="M8.4,15.8l9.4-9.5l-1.5-1.5l-8,8L4.6,9l-1.5,1.5L8.4,15.8z M10.5,0c1.9,0,3.7,0.5,5.3,1.4c1.6,0.9,2.8,2.2,3.7,3.7c1,1.6,1.4,3.4,1.4,5.3s-0.5,3.7-1.4,5.3c-0.9,1.6-2.2,2.8-3.7,3.7c-1.6,1-3.4,1.4-5.3,1.4s-3.7-0.5-5.3-1.4c-1.6-0.9-2.8-2.2-3.7-3.8c-1-1.6-1.4-3.4-1.4-5.3s0.5-3.7,1.4-5.3c0.9-1.6,2.2-2.8,3.8-3.8C6.8,0.5,8.6,0,10.5,0z"
+
+              div.message_alert_txt
+                h3.message_alert_display_txt
+                  = message
+
+              div.message_alert_close_icon
+                svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 96 96" enable-background="new 0 0 96 96" xml:space="preserve"
+                  polygon fill="#14A83B" points="96,14 82,0 48,34 14,0 0,14 34,48 0,82 14,96 48,62 82,96 96,82 62,48"
+
+div.user_page_box
+  = javascript_pack_tag 'chat'
+
+  - if @judge == false
+    - if @current_user.role == 2
+      div.user_message_advise
+        div.user_message_advise_body
+          div.user_message_advise_body_left
+            div.user_message_advise_icon_alert
+              svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 23 23" xml:space="preserve"
+                path style="fill-opacity:0.87" d="M3.3,3.3C5.6,1.1,8.2,0,11.4,0s5.8,1.1,8,3.3s3.3,4.9,3.3,8s-1.1,5.8-3.3,8s-4.9,3.3-8,3.3s-5.8-1.1-8-3.3S0,14.5,0,11.4S1.1,5.6,3.3,3.3z M12.7,17.1v-2.2h-2.6v2.2H12.7z M12.7,12.2v-7h-2.6v7H12.7z"
+            div.user_message_advise_txt
+              h2.user_message_advise_txt_up プロフィールの登録を完了してください
+              h3.user_message_advise_txt_sub プロフィールの登録が完了すると、あなたにぴったりのチームからオファーが届きます。
+
+          div.user_message_advise_body_right
+            div.user_message_advise_button
+              = link_to users_setting_path(@current_user)
+                button.user_settings_button
+                  = t('pro-resist')
+
+  div.project_count
+    p.project_count_txt
+      | プロジェクト件数：
+      - if @current_user.role == 2
+        = @creatorproject.size
+        | 件
+      - else
+        = @clientproject.size
+        | 件
+
+  - if @teammember.size == 0
+    div.user_page_box_container
+      div.user_page_box_container_project
+        div.box_container_project_head
+          div.box_container_project_head_left
+            div.box_container_project_title
+              h3.box_container_project_title_txt.initialize 現在プロジェクトは存在しません
+            div.box_container_project_status.initialize
+              h4.box_container_project_status_txt
+
+          /*
+            div.box_container_project_head_right
+              div.box_container_project_members_info
+                div.box_container_project_members_info_profile_pic
+                  div.members_info_profile_pic
+                    = image_tag "profile_default.png"
+                  div.members_info_profile_pic
+                    = image_tag "profile_default.png"
+                  div.members_info_profile_pic
+                    = image_tag "profile_default.png"
+                  div.members_info_profile_pic
+                    = image_tag "profile_default.png"
+                div.box_container_project_members_info_count
+                  p.members_info_count チームメンバー：4
+
+        - if @current_user.role == 1
+          div.box_container_project_body
+            div.container_project_body_box
+              div.container_project_body_title
+                div.project_body_title
+                  h2.project_body_title_txt チームをつくりましょう
+
+              div.container_project_body_description
+                p.container_project_body_description_txt
+                  | 依頼したいプロジェクトについて簡単な質問に答えるだけで
+                  br/
+                  | 回答結果をもとに分析し、あなたに最適な人材を集めたチームを提案します。
+
+              div.container_project_body_button
+                = link_to new_createteams_category_path do
+                  div.mboverlay_item
+                    div.menu_start_search チームを作る
+
+
+        - else
+          div.box_container_project_body
+            div.container_project_body_box
+              div.container_project_body_title
+                div.project_body_title_img
+                  = image_tag "slack_invitation.png"
+                div.project_body_title
+                  h2.project_body_title_txt プロフィールを充実させましょう
+
+              div.container_project_body_description
+                p.container_project_body_description_txt
+                  | より詳細なプロフィールを作成することで
+                  br/
+                  | より適正なマッチングによる企業からのオファーが届きます。
+
+
+
+  - elsif @current_user.role == 2
+    - @creatorproject.each_with_index do |creatorproject, i|
+      div.user_page_box_container
+        div.user_page_box_container_project
+          div.box_container_project_head
+            - if @creatorproject[i].status == 1
+              div.box_container_project_head_left
+                div.box_container_project_title
+                  h3.box_container_project_title_txt.negotiation
+                    = @creatorproject[i].title
+                div.box_container_project_status.negotiation
+                  h4 = "商談中のプロジェクトが存在します"
+
+            - elsif @creatorproject[i].status == 2
+                div.box_container_project_head_left
+                  div.box_container_project_title
+                    h3.box_container_project_title_txt.prepared
+                      = @creatorproject[i].title
+                  div.box_container_project_status.prepared
+                    h4.box_container_project_status_txt
+
+            - elsif @creatorproject[i].status == 3
+                div.box_container_project_head_left
+                  div.box_container_project_title
+                    h3.box_container_project_title_txt.progress
+                      = @creatorproject[i].title
+                  div.box_container_project_status.progress
+                    h4.box_container_project_status_txt
+
+            - elsif @creatorproject[i].status == 9
+              div.box_container_project_head_left
+                div.box_container_project_title
+                  h3.box_container_project_title_txt.complete
+                    = @creatorproject[i].title
+                div.box_container_project_status.complete
+                  h4.box_container_project_status_txt
+
+
+            - if @creatorproject[i].status == 3
+              div.box_container_project_head_right
+                div.box_container_project_members_info
+                  div.box_container_project_members_info_profile_pic
+                    - @user.each.with_index(0) do |user, idx|
+                      - if !@user[i][idx] == nil?
+                        - if @user[i][idx].picture.present?
+                          div.members_info_profile_pic
+                            / = link_to users_teammember_path(@user[i][idx].id)
+                            = image_tag @object[i][idx]
+                        - else
+                          div.members_info_profile_pic
+                            / = link_to users_teammember_path(@user[i][idx].id)
+                            = image_tag "profile_default.png"
+                  div.box_container_project_members_info_count
+                    = link_to team_users_teammember_path(@creatorproject[i].id)
+                      p.members_info_count
+                        | チームメンバー：
+                        = @user[i].size
+                        | 人
+
+          - if @creatorproject[i].status == 1
+            div.box_container_preproject_body
+              div.container_preproject_body_box
+                div.container_preproject_body_title
+                  div.preproject_body_title
+                    h2.preproject_body_title_txt
+                      = @creatorproject[i].title
+                  div.preproject_body_title_img
+                    = image_tag "slack_invitation.png"
+
+                div.container_preproject_body_description
+                  p.container_preproject_body_description_txt
+                    div.inline_p style="display:flex"
+                      p プロジェクトの種類：
+                      p = @creatorproject[i].team.genre
+                    div.inline_p style="display:flex"
+                      p 報酬額：
+                      p style="border-bottom:1px solid #4CAF50; margin-bottom:-1px; color: #4CAF50" 希望通り
+                    /= @creatorproject[i].team.budget.to_s(:delimited)
+                    | 稼働時間：週
+                    = @creatorproject[i].team.frequency
+                    br
+                    | 開始時期：
+                    - if @creatorproject[i].team.urgency == "0"
+                      | 間も無くプロジェクトが開始されます。
+                    - else
+                      | 現在商談中です。
+                    br
+
+            div.box_container_project_answer
+              div.container_project_answer_box
+                div.project_answer_button
+                  - if @answer.nil?
+                    = link_to users_project_path(@creatorproject[i].id, params: { project: { asnwer: 2} }), method: :put
+                      button.project_answer_button_off
+                        = t('interest')
+                    = link_to users_project_path(@creatorproject[i].id, params: { project: { asnwer: 3} }), method: :put
+                      button.project_answer_button_off
+                        = t('decline')
+                  - else
+                    = link_to users_project_path(@creatorproject[i].id, params: { project: { asnwer: 2} }), method: :put
+                      - if @answer[i].answer == 2
+                        button.project_answer_button_on
+                          = t('interest')
+                      -else
+                        button.project_answer_button_off
+                          = t('interest')
+                    = link_to users_project_path(@creatorproject[i].id, params: { project: { asnwer: 3} }), method: :put
+                      - if @answer[i].answer == 3
+                        button.project_answer_button_on
+                          = t('decline')
+                      -else
+                        button.project_answer_button_off
+                          = t('decline')
+
+          - elsif @creatorproject[i].status == 2
+            div.box_container_preproject_body
+              div.container_preproject_body_box
+                div.container_preproject_body_title
+                  div.preproject_body_title
+                    h2.preproject_body_title_txt
+                      = @creatorproject[i].title
+                  div.preproject_body_title_img
+                    = image_tag "slack_invitation.png"
+
+                div.container_preproject_body_description
+                  p.container_preproject_body_description_txt
+                    div.inline_p style="display:flex"
+                      p プロジェクトの種類：
+                      p = @creatorproject[i].team.genre
+                    div.inline_p style="display:flex"
+                      p 報酬額：
+                      p style="border-bottom:1px solid #4CAF50; margin-bottom:-1px; color: #4CAF50" 希望通り
+                    /= @creatorproject[i].team.budget.to_s(:delimited)
+                    | 稼働時間：週
+                    = @creatorproject[i].team.frequency
+                    br
+                    | 開始時期：
+                    - if @creatorproject[i].team.urgency == "0"
+                      | 間も無くプロジェクトが開始されます。
+                    - else
+                      | 現在商談中です。
+
+              div.box_container_project_body
+                div.container_project_body_box
+                  div.container_project_body_button
+                    = link_to users_project_path(@creatorproject[i]) do
+                      div.mboverlay_item
+                        div.menu_start_search プロジェクト詳細
+
+            div.box_container_project_answer
+              div.container_project_answer_box
+                div.project_answer_button
+                  - if @answer.nil?
+                    = link_to users_project_path(@creatorproject[i].id, params: { project: { asnwer: 2} }), method: :put
+                      button.project_answer_button_off
+                        = t('interest')
+                    = link_to users_project_path(@creatorproject[i].id, params: { project: { asnwer: 3} }), method: :put
+                      button.project_answer_button_off
+                        = t('decline')
+                  - else
+                    = link_to users_project_path(@creatorproject[i].id, params: { project: { asnwer: 2} }), method: :put
+                      - if @answer[i].answer == 2
+                        button.project_answer_button_on
+                          = t('interest')
+                      -else
+                        button.project_answer_button_off
+                          = t('interest')
+                    = link_to users_project_path(@creatorproject[i].id, params: { project: { asnwer: 3} }), method: :put
+                      - if @answer[i].answer == 3
+                        button.project_answer_button_on
+                          = t('decline')
+                      -else
+                        button.project_answer_button_off
+                          = t('decline')
+
+
+          - elsif @creatorproject[i].status == 3
+            div.box_container_project_body
+              div.container_project_body_box
+                div.container_project_body_title
+                  div.project_body_title_img
+                    = image_tag "slack_invitation.png"
+                  div.project_body_title
+                    h2.project_body_title_txt プロジェクト進行中
+
+                div.container_project_body_description
+                  p.container_project_body_description_txt
+                    | 参加中のプロジェクトが進行しています。
+                    br/
+                    | お困りの際は担当者までお気軽にご連絡ください。
+
+                div.container_project_body_button
+                  = link_to users_project_path(@creatorproject[i]) do
+                    div.mboverlay_item
+                      div.menu_start_search プロジェクト詳細
+
+          - else
+            div.box_container_project_body
+              div.container_project_body_box
+                div.container_project_body_description
+                  p.container_project_body_description_txt
+                    | このプロジェクトは終了しました。
+
+
+  - else
+    - @clientproject.each.with_index(0) do |project, i|
+      div.user_page_box_container
+        div.user_page_box_container_project
+          div.box_container_project_head
+            div.box_container_project_head_left
+
+              - if @clientproject[i].status == 1
+                div.box_container_project_title
+                  h3.box_container_project_title_txt.negotiation
+                    = @clientproject[i].title
+                div.box_container_project_status.negotiation
+                  h4.box_container_project_status_txt
+
+              - elsif @clientproject[i].status == 2
+                div.box_container_project_title
+                  h3.box_container_project_title_txt.prepared
+                    = @clientproject[i].title
+                div.box_container_project_status.prepared
+                  h4.box_container_project_status_txt
+
+              - elsif @clientproject[i].status == 3
+                div.box_container_project_title
+                  h3.box_container_project_title_txt.progress
+                    = @clientproject[i].title
+                div.box_container_project_status.progress
+                  h4.box_container_project_status_txt
+
+              - elsif @clientproject[i].status == 9
+                div.box_container_project_title
+                  h3.box_container_project_title_txt.complete
+                    = @clientproject[i].title
+                div.box_container_project_status.complete
+                  h4.box_container_project_status_txt
+
+            div.box_container_project_head_right
+              div.box_container_project_members_info
+                div.box_container_project_members_info_profile_pic
+                  - @teammember[i].each_with_index do |teammember, idx|
+                    - if !@user[i][idx] == nil?
+                      - if @user[i][idx].picture.present?
+                        div.members_info_profile_pic
+                          / = link_to users_teammember_path(@user[i][idx].id)
+                          = image_tag @object[i][idx]
+                      - else
+                        div.members_info_profile_pic
+                          / = link_to users_teammember_path(@user[i][idx].id)
+                          = image_tag "profile_default.png"
+                div.box_container_project_members_info_count
+                  = link_to team_users_teammember_path(@clientproject[i].id)
+                    p.members_info_count
+                      | チームメンバー：
+                      = @user[i].size
+                      | 人
+
+
+          div.box_container_project_body
+            div.container_project_body_box
+              - if @clientproject[i].status == 1
+                div.container_project_body_title
+                  div.project_body_title_img
+                    = image_tag "slack_invitation.png"
+                  div.project_body_title
+                    h2.project_body_title_txt 内容を確認次第、担当者が無料相談日時のご連絡をいたします
+
+                div.container_project_body_description
+                  p.container_project_body_description_txt
+                    | 無料相談日時を決めるため、ご登録いただいた電話番号へ
+                    br/
+                    | 担当者がご連絡いたします。少々お待ちください。
+
+                div.container_project_body_button
+                  = link_to users_project_path(@clientproject[i]) do
+                    div.mboverlay_item
+                      div.menu_start_search プロジェクト詳細
+
+              - elsif @clientproject[i].status == 2
+                div.container_project_body_title
+                  div.project_body_title_img
+                    = image_tag "slack_invitation.png"
+                  div.project_body_title
+                    h2.project_body_title_txt プロジェクト準備中
+
+                div.container_project_body_description
+                  p.container_project_body_description_txt
+                    | 参加中のプロジェクトが進行しています。
+                    br/
+                    | お困りの際は担当者までお気軽にご連絡ください。
+
+                div.container_project_body_button
+                  = link_to users_project_path(@clientproject[i]) do
+                    div.mboverlay_item
+                      div.menu_start_search プロジェクト詳細
+
+              - elsif @clientproject[i].status == 3
+                div.container_project_body_title
+                  div.project_body_title_img
+                    = image_tag "slack_invitation.png"
+                  div.project_body_title
+                    h2.project_body_title_txt プロジェクト進行中
+
+                div.container_project_body_description
+                  p.container_project_body_description_txt
+                    | 参加中のプロジェクトが進行しています。
+                    br/
+                    | お困りの際は担当者までお気軽にご連絡ください。
+
+                div.container_project_body_button
+                  = link_to users_project_path(@clientproject[i]) do
+                    div.mboverlay_item
+                      div.menu_start_search プロジェクト詳細
+
+              - else
+                div.container_project_body_description
+                  p.container_project_body_description_txt
+                    | このプロジェクトは終了しました。
+
+
+
+  - if @current_user
+    - unless @current_user.role == 1

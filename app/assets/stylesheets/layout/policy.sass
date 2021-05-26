@@ -1,0 +1,50 @@
+@import "components/colors.sass"
+
+.service_policy
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100%
+  .service_policy_box_container
+    background-color: $color_white
+    width: 85%
+    max-width: 810px
+    padding: 45px 16px
+    border-radius: 4px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    max-height: 85%
+    overflow-y: scroll
+    overflow-x: hidden
+    @media (max-width: 560px)
+      width: 100%
+    .box_container_title
+      text-align: center
+      margin-bottom: 32px
+      h3.box_container_title_txt
+        font-size: 20px
+        font-weight: 600
+
+    .service_policy_content
+
+.back_button_center
+  margin-top: 32px
+  text-align: center
+  width: 100%
+  a
+    padding: 8px 64px
+    background-color: $color_red
+    color: $color_white
+    border-radius: 2px
+
+
+.pre-scrollable
+  height: 115px
+  overflow: scroll
+  border: 1px solid #ebebeb
+  padding: 18px 12px
+  width: 100%
+  border-radius: 2px
+  margin-top: 25px
+  .MsoNormal
+    font-size: 10px
+    

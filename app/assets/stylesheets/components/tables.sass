@@ -1,0 +1,87 @@
+@import "components/colors.sass"
+
+table
+  padding-top: 16px
+  padding-bottom: 16px
+  thead
+    background: $color_black
+    font-weight: normal
+    color: $color_white
+    tr
+      th
+        text-align: left
+        border-bottom: none !important
+        font-weight: normal !important
+        font-size: 16px
+  tbody
+    tr
+      td
+        word-break: break-all
+        span
+          color: $color_white
+          padding: 2px 5px
+          border-radius: 4px
+          margin-right: 2px
+          &.admin_user
+            background-color: $color_red
+          &.simple_user
+            background-color: $color_blue
+          &.active
+            background-color: $color_green
+          &.inactive
+            background-color: $color_darkgrey
+          &.role_creator
+            background-color: $color_yellow
+            color: $color_black
+          &.role_enterprise
+            background-color: #9e008b
+          &.pm_creator
+            background-color: #9e008b
+          &.webdesigner_creator
+            background-color: $color_yellow
+            color: $color_black
+          &.uxuidesigner_creator
+            background-color: coral
+            color: $color_black
+          &.frontengineer_creator
+            background-color: $color_blue
+          &.backengineer_creator
+            background-color: $color_black
+          &.project_negotiation
+            background-color: $color_lightgreen
+            color: $color_green
+          &.project_prepared
+            background-color: $color_yellow
+            color: $color_black
+          &.project_progress
+            background-color: $color_pink
+            color: $color_red
+          &.project_complete
+            background-color: $color_darkgrey
+            color: $color_black
+    
+table.dataTable thead
+  .sorting, .sorting_asc, .sorting_desc
+      background-position: left !important
+
+
+.dataTables_wrapper
+  .dataTables_filter
+    input
+      border: 1px solid
+
+div.admin_user_page_box_title
+  text-align: center
+  margin-bottom: 32px
+  h2.admin_user_page_box_title_txt
+    font-weight: bold
+    font-size: 24px
+
+div.admin_user_box_options_items
+  text-align: center
+  div.admin_user_box_options_command
+    button.admin_user_box_options_command_txt
+      background-color: $color_red
+      color: $color_white
+      padding: 12px 18px
+      margin-top: 24px

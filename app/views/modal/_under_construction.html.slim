@@ -1,0 +1,151 @@
+sass:
+  .error_display
+    background-repeat: no-repeat
+    background-size: cover
+    width: 100%
+    height: 100%
+    position: fixed
+    display: block
+    overflow: auto
+    top: 0
+    left: 0
+    z-index: 100
+    background-color: rgba(0,0,0,0.5)
+
+    .error_display_animation
+      display: flex
+      justify-content: center
+      align-items: center
+
+      .registration_box_container
+        width: 85%
+        max-width: 540px
+        padding: 45px 16px
+        border-radius: 4px
+        border: 1px solid rgba(0, 0, 0, 0.12)
+        max-height: 85%
+        overflow-y: scroll
+        overflow-x: hidden
+
+    h2
+      text-align: center
+      font-size: 24px
+      font-weight: 400
+      text-transform: uppercase
+      margin: 0 auto
+      color: #fff
+      letter-spacing: 3px
+      padding: 8px
+    h3
+      text-align: center
+      font-size: 16px
+      font-weight: 400
+      text-transform: uppercase
+      margin: 0 auto
+      color: #fff
+      letter-spacing: 1px
+      padding-bottom: 24px
+      padding-top: 8px
+    .error_display_back_command
+      text-align: center
+      .error_display_back
+        text-align: center
+    button
+      margin: 0 auto
+      background-color: rgba(0, 0, 0, 0)
+      border: 1px solid #fff
+      color: #fff
+      font-size: 16px
+      padding: 10px 70px
+      text-align: center
+      text-decoration: none
+      display: inline-block
+      text-transform: uppercase
+      -webkit-border-radius: 5px 5px 5px 5px
+      border-radius: 5px 5px 5px 5px
+      -webkit-transition: all 0.3s ease-in-out
+      -moz-transition: all 0.3s ease-in-out
+      -ms-transition: all 0.3s ease-in-out
+      -o-transition: all 0.3s ease-in-out
+      transition: all 0.3s ease-in-out
+      &:hover
+        background-color: #fff
+        color: #e6002d
+        cursor: pointer
+      &:active
+        -moz-transform: scale(0.95)
+        -webkit-transform: scale(0.95)
+        -o-transform: scale(0.95)
+        -ms-transform: scale(0.95)
+        transform: scale(0.95)
+
+  .text
+    fill: none
+    stroke-width: 2
+    stroke-linejoin: round
+    stroke-dasharray: 70 330
+    stroke-dashoffset: 0
+    -webkit-animation: stroke 6s infinite linear
+    animation: stroke 6s infinite linear
+    font-size: 4em
+    text-transform: uppercase
+    &:nth-child(5n + 1)
+      stroke: #fff
+      -webkit-animation-delay: -1.2s
+      animation-delay: -1.2s
+    &:nth-child(5n + 2)
+      stroke: #fff
+      -webkit-animation-delay: -2.4s
+      animation-delay: -2.4s
+    &:nth-child(5n + 3)
+      stroke: #e6002d
+      -webkit-animation-delay: -3.6s
+      animation-delay: -3.6s
+    &:nth-child(5n + 4)
+      stroke: #fff
+      -webkit-animation-delay: -4.8s
+      animation-delay: -4.8s
+    &:nth-child(5n + 5)
+      stroke: #fff
+      -webkit-animation-delay: -6s
+      animation-delay: -6s
+
+  @-webkit-keyframes stroke
+    100%
+      stroke-dashoffset: -400
+
+
+  @keyframes stroke
+    100%
+      stroke-dashoffset: -400
+
+
+div.error_display style="display: none;"
+  div.error_display_animation
+    svg viewBox="0 0 700 80"
+      symbol id="s-text"
+        text text-anchor="middle" x="50%" y="50%" dy=".35em" 306 MESSAGE
+      use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"
+      use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"
+      use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"
+      use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"
+      use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="text"
+
+  div.error_display_description
+    h2.error_display_subtitle UNDER CONSTRUCTION
+    h3.error_display_description
+     | We are sorry for your inconvenience
+     br
+     | ただいま工事中です。ちょっと待ってね。
+
+  div.error_display_back_command
+    = link_to admin_users_adminusers_path
+      div.error_display_back
+        button.error_display_back_button
+          = t('back')
+
+
+= javascript_tag do
+  |  $('#appear_modal').click(function() {
+        $('.error_display').show();
+      });

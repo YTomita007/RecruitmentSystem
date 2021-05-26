@@ -1,0 +1,62 @@
+div.category_page_box
+  div.category_page_box_container
+    div.category_page_box_container_operation
+      div.category_container_operation_head
+        div.category_container_operation_side
+          div.category_container_operation_title
+            h3.category_container_operation_title_txt.initialize workeasy管理者画面
+
+      div.section_category
+        div.category_box
+          div.category_box_content
+            div.category_box_options
+              div.category_box_title
+                h2.category_box_title_txt 新規登録するカテゴリを入力してください。
+
+              div.table-responsive.category_box_tables
+                table.category_box_options_table
+                  = form_for @fruit, url: admin_masters_fruits_path do |f|
+                    thead
+                      tr.bg-info
+                        th.category_box_options_items_head = "フルーツ画像"
+                        th.category_box_options_items_head = "アニマル画像"
+                        th.category_box_options_items_head = "フルーツ英名"
+                        th.category_box_options_items_head = "フルーツ和名"
+                        th.category_box_options_items_head = "動物占い名称"
+                        th.category_box_options_items_head = "動物占いグループ"
+                        th.category_box_options_items_head = "カバラ数秘学"
+                        th.category_box_options_items_head = "フルーツ詳細"
+                    tbody
+                      td.category_box_options_items_body
+                        = image_tag "profile_default.png", id: "uploaded_img"
+                        = f.file_field :fruitspic, id: "upload_img_input", accept: ".png, .jpeg, .jpg, .gif"
+                      td.category_box_options_items_body
+                        = image_tag "profile_default.png", id: "uploaded_img"
+                        = f.file_field :animalpic, id: "upload_img_input", accept: ".png, .jpeg, .jpg, .gif"
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :ename
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :wname
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :animal
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :group
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :cabbala
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :description
+                    div.category_decide_button_command
+                      button.category_decide_button
+                        = f.submit t('regist')
+
+              div.category_box_options_items
+                = link_to admin_masters_fruits_path
+                  div.category_box_options_command
+                    button.category_box_options_command_txt
+                      = '一覧へ戻る'

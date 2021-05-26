@@ -1,0 +1,39 @@
+div.skill_page_box
+  div.skill_page_box_container
+    div.skill_page_box_container_operation
+      div.skill_container_operation_head
+        div.skill_container_operation_side
+          div.skill_container_operation_title
+            h3.skill_container_operation_title_txt.initialize workeasy管理者画面
+
+      div.section_skill
+        div.skill_box
+          div.skill_box_content
+            div.skill_box_options
+              div.skill_box_title
+                h2.skill_box_title_txt スキル情報詳細
+
+              div.table-responsive.skill_box_tables
+                table.skill_box_options_table
+                  = form_for @skill, url: admin_masters_skill_path, method: :patch do |f|
+                    thead
+                      tr.bg-info
+                        th.skill_box_options_items_head = "スキル番号"
+                        th.skill_box_options_items_head = "スキル名称"
+                    tbody
+                      td.skill_box_options_items_body
+                        = f.label @skill.id
+                      td.skill_box_options_items_body
+                        div.skill_box_title_table_text
+                          = f.text_field :title
+
+                    div.skill_box_options_table
+                      div.skill_decide_table_command
+                        button.skill_decide_button_table
+                          = f.submit t('update')
+
+                div.skill_box_options_items
+                  = link_to admin_masters_skills_path
+                    div.skill_box_options_command
+                      button.skill_box_options_command_txt
+                        = '一覧へ戻る'

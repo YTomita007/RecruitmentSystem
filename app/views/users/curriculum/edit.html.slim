@@ -1,0 +1,55 @@
+div.user_profile_setting
+  div.user_profile_setting_container
+    = nested_form_for @user, url: users_curriculum_path do |f|
+      div.profile_setting_form
+        div.profile_setting_container_box#curriculum_box
+          div.profile_setting_box_head
+            div.profile_setting_box_head_items
+              div.profile_setting_box_head_title
+                h2.profile_setting_box_head_title_txt
+                 | 経験
+                 span.public_info_tag 公開されます
+              div.profile_setting_box_head_buttons                
+                div.profile_setting_box_head_button
+                  = link_to users_setting_path(@current_user) do
+                    button.profile_setting_edit data-turbolinks="true" 前の画面へ戻る
+                div.profile_setting_box_head_button
+                  button.profile_setting_save type="submit"
+                    = f.submit t('update')
+
+          div.profile_setting_box_body
+            div.profile_setting_box_body_items
+              div.profile_setting_box_body_item
+                = f.fields_for :careers, value: @user.id do |car|
+                  div.profile_setting_cv
+                    div.profile_setting_cv_period
+                      div.profile_setting_cv_period_tag
+                        p.profile_setting_cv_period_tag_txt 期間
+                      div.profile_setting_cv_period_time
+                        div.profile_setting_cv_period_time_txt_start
+                          div.profile_setting_inline_period_start
+                            = car.date_select :start_duration, use_month_numbers:true, start_year:Time.now.year, end_year:1900, discard_day: true, include_blank: true
+                        h5.profile_setting_cv_period_time_txt 〜
+                        div.profile_setting_cv_period_time_txt_end
+                          div.profile_setting_inline_period_end
+                            = car.date_select :end_duration, use_month_numbers:true, start_year:Time.now.year, end_year:1900, discard_day: true, include_blank: true
+
+                      div.profile_setting_cv_project_info
+                        p.profile_setting_cv_project_info_txt プロジェクト概要
+                        = car.text_area :description, placeholder: "プロジェクトの概要・担当した業務・実績等を入力してください"
+
+                      div.profile_cv_destroy
+                        = car.link_to_remove t('destroy')
+
+                .actions.profile_cv_add
+                  = f.link_to_add t('add'), :careers
+
+
+= javascript_tag do
+  | $(document).ready(function(){
+
+      $(".profile_setting_inline_period_start select:first-child").after("<span class='infra_select'>年</span>");
+      $(".profile_setting_inline_period_end select:first-child").after("<span class='infra_select'>年</span>");
+      $('.profile_setting_cv_period_time span.infra_select').next($('select')).after("<span class='infra_select'>月</span>")
+
+    });

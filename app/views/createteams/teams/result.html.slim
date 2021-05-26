@@ -1,0 +1,95 @@
+section
+  div.section_search
+    div.seach_question_box
+      div.search_result_spinner_space#teammember_result
+        div.question_box_content
+            div.question_innerbox
+              div.question_box_title
+                h2.question_box_title_txt あなたにぴったりのチームが完成しました
+
+              div.search_box_results
+                - @teammember.each_with_index do |teammember, i|
+                  div.search_result_member
+                    div.search_member_pic
+                      - if @current_user
+                        - if @teammember[i].user.picture.present?
+                          = image_tag @object[i]
+                        - else
+                          = image_tag "profile_default.png"
+                      - else
+                        = image_tag "profile_default.png"
+                    div.search_member_info
+                      div.search_member_position
+                        - if i == 0
+                          h5.search_member_title
+                          = t('projectmanager')
+                        - elsif i == 1
+                          h5.search_member_title
+                          = t('designer')
+                        - elsif i == 2
+                          - if @teammember.length == 3
+                            h5.search_member_title
+                            = t('engineer')
+                          - else
+                            h5.search_member_title
+                            = t('frontendengineer')
+                        - elsif i == 3
+                          h5.search_member_title
+                          = t('backendengineer')
+                      div.search_member_work
+                        div.search_member_hour
+                          p.yen_symbol ¥
+                          p.member_hour_rate
+                            - if @teammember[i].user.detail.hourly_rate
+                              = @teammember[i].user.detail.hourly_rate
+                              | / 時間
+                            - else
+                              | *** / 時間
+                        div.search_member_week
+                          - if @teammember[i].user.detail.availability == 0
+                            p.member_week_availability 週3日〜
+                          - elsif @teammember[i].user.detail.availability == 1
+                            p.member_week_availability 週2日〜
+
+                      div.search_member_name
+                        - if @current_user
+                          p.member_name_diplay = @teammember[i].user.username
+                        - else
+                          p.member_name_acronym（氏名は登録後に閲覧できます）
+
+
+        div.search_result_downpart
+          div.question_box_commands#no_border
+            div.question_box_command_next
+
+          div.team_total_infos
+            div.team_total_price
+                div.team_total_price_txt 合計：月額
+                div.team_total_price_calc
+                  = @team.budget / 10000
+                div.team_total_price_txt 万
+            div.team_total_info_note ※金額は想定です。無料相談後に金額が変動する場合があります
+
+          div.question_box_commands_last
+            = link_to budget_createteams_categories_path(:id), method: :get
+              div.question_box_command_reset
+                button.question_box_command_reset_txt
+                  = t('back')
+
+            div.question_box_command_last
+              - if !@current_user
+                button.question_box_command_last_txt#appear_modal
+                  = t('reservation')
+              - else
+                = link_to sendmail_createteams_teams_path do
+                  button.question_box_command_last_txt
+                    = t('reservation')
+
+          div.question_box_close_command
+            = link_to createteams_team_path(@team.id), method: :delete do
+              div.question_box_close
+                button.box_close_button
+                  = t('reset')
+
+= render 'modal/register'
+= render 'modal/loader'

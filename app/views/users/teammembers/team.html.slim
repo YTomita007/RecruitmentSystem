@@ -1,0 +1,121 @@
+div.team_page_box_container
+  div.team_box_container
+    div.team_box_container_head
+      div.team_box_head_counter
+        div.team_counter_members
+          | チームメンバー：
+          = @teammembers.size
+          | 名
+    div.team_box_container_body
+      div.team_box_body_members
+        - @user.each_with_index do |member, i|
+          div.team_box_body_member
+            div.team_box_body_member_up
+              div.member_body_left
+                div.member_body_profile_pic
+                  - if @user[i].picture.present?
+                    = image_tag @object[i]
+                  - else
+                    = image_tag "profile_default.png", width: 80
+
+                div.member_body_schedule
+                  - if !@user[i].detail.schedule.nil?
+                    p.member_body_schedule_txt
+                      | 〜
+                      = @user[i].detail.schedule
+                      | 時間/週
+                div.member_body_hourly_rate
+                  - if !@user[i].detail.hourly_rate.nil?
+                    p.member_body_hourly_rate
+                     | ¥
+                     = @user[i].detail.hourly_rate
+                     | /時間
+
+              div.member_body_right
+                div.member_body_inline_namerole
+                  div.member_body_fullname
+                    p.member_body_fullname_txt
+                      = @user[i].lastname
+                      = @user[i].firstname
+                  div.member_body_role
+                    -if i == 0
+                      h4.member_body_role_txt = "プロジェクトマネージャー"
+                    -elsif i == 1
+                      h4.member_body_role_txt = "デザイナー"
+                    -elsif i == 2
+                      - if @user.size == 3
+                        h4.member_body_role_txt = "エンジニア"
+                      - else
+                        h4.member_body_role_txt = "フロントエンドエンジニア"
+                    -elsif i == 3
+                      h4.member_body_role_txt = "バックエンドエンジニア"
+
+                div.member_body_detail_inline
+                  div.member_body_languages
+                    div.member_body_languages_icon
+                      = image_tag "languages.png", width: 10
+                    - if !@user[i].detail.languages.nil?
+                      = @user[i].detail.languages
+
+                div.member_body_detail_inline
+                  div.member_body_skill_list
+                    - if !@memberskills[i].blank?
+                      - @memberskills[i].each_with_index do |memberskills, j|
+                        p.member_body_skill_list_item = @memberskills[i][j].title
+
+                div.member_body_introduction
+                  - if !@user[i].detail.introduction.nil?
+                    textarea.member_body_introduction_txt readonly="true"
+                      = @user[i].detail.introduction
+
+
+            div.team_box_body_member_down
+              div.panel_detail_info
+
+                div.panel_detail_info_cv
+                  - if !@career[i].blank?
+                    div.panel_detail_info_cv_title
+                      h4.panel_detail_info_cv_title_txt 経験
+
+                    - @career[i].each_with_index do |career, j|
+                      div.panel_detail_info_cv_period
+                        div.panel_detail_info_cv_period_tag
+                          p.panel_detail_info_cv_period_tag_txt 期間
+                        div.panel_detail_info_cv_period_time
+                          h5.panel_detail_info_cv_period_time_txt_start
+                            = @career[i][j].start_duration.strftime("%Y年%-m月")
+                          h5.panel_detail_info_cv_period_time_txt 〜
+                          h5.panel_detail_info_cv_period_time_txt_end
+                            = @career[i][j].end_duration.strftime("%Y年%-m月")
+                        div.panel_detail_info_cv_project_info
+                          p.panel_detail_info_cv_project_info_txt プロジェクト概要
+                          textarea.panel_detail_info_cv_project_info_desc readonly="true"
+                            = @career[i][j].description
+
+                div.panel_detail_info_portfolio
+                  - if @user[i].paperclip
+                    div.panel_detail_info_portfolio_title
+                      h4.panel_detail_info_portfolio_title_txt ポートフォリオ
+                    div.panel_detail_info_portfolio_preview
+                      div.detail_info_portfolio_preview_name
+                        div.profile_setting_portfolio_upload
+                          span.clickable_object
+                            = content_tag :object, width: '250', data: @portfolio[i] do
+
+                          div.profile_setting_portfolio_link
+                            = link_to @portfolio[i], target: '_blank', class: 'portfolio_preview_link'
+                              span.profile_setting_portfolio_link_btn もっとみる
+
+
+                    div.panel_detail_info_website
+                      div.panel_detail_info_website_link
+                        = link_to @user[i].paperclip.link, @user[i].paperclip.link, target: '_blank'
+
+              div.readmore_button
+                button.readmore_button_text
+                div.readmore_arrow
+                  span.rmic.rmarw_b
+
+
+      div.back_button_center
+        = link_to t('back'), root_path

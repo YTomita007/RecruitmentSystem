@@ -1,0 +1,159 @@
+div.team_page_box_container
+  div.team_box_container
+    div.team_box_container_head
+      div.team_box_head_counter
+        div.team_counter_members
+          | チームメンバー：
+          = @teammembers.size
+          | 名
+
+      div.admin_team_right
+        div.admin_team_commands_space
+          = link_to admin_organizations_team_members_path(@teammembers[0].team.id)
+            div.admin_team_box_command
+              button.admin_team_box_command_txt
+                | チームメンバーの編成画面へ
+
+    div.team_box_container_body
+      div.team_box_body_members
+        - @user.each_with_index do |member, i|
+          div.team_box_body_member
+            div.team_box_body_member_up
+              div.member_body_left
+                div.member_body_profile_pic
+                  - if @user[i].picture.present?
+                    = image_tag @object[i]
+                  - else
+                    = image_tag "profile_default.png", width: 80
+
+                div.member_body_schedule
+                  - if !@user[i].detail.schedule.nil?
+                    p.member_body_schedule_txt
+                      | 〜
+                      = @user[i].detail.schedule
+                      | 時間/週
+                div.member_body_hourly_rate
+                  - if !@user[i].detail.hourly_rate.nil?
+                    p.member_body_hourly_rate
+                     | ¥
+                     = @user[i].detail.hourly_rate
+                     | /時間
+
+              div.member_body_right
+                div.member_body_inline_namerole
+                  div.member_body_fullname
+                    p.member_body_fullname_txt
+                      = @user[i].lastname
+                      = @user[i].firstname
+                  div.member_body_answer
+                    -if @teammembers[i].answer.nil?
+                      h4.member_body_answer_txt_maybe 未回答
+                    -elsif @teammembers[i].answer == 1
+                      h4.member_body_answer_txt 参加する
+                    -elsif @teammembers[i].answer == 2
+                      h4.member_body_answer_txt 興味あり
+                    -elsif @teammembers[i].answer == 3
+                      h4.member_body_answer_txt_no 辞退する
+                  div.member_body_role
+                    -if i == 0
+                      h4.member_body_role_txt = "プロジェクトマネージャー"
+                    -elsif i == 1
+                      h4.member_body_role_txt = "デザイナー"
+                    -elsif i == 2
+                      - if @user.size == 3
+                        h4.member_body_role_txt = "エンジニア"
+                      - else
+                        h4.member_body_role_txt = "フロントエンドエンジニア"
+                    -elsif i == 3
+                      h4.member_body_role_txt = "バックエンドエンジニア"
+
+                div.member_body_detail_inline
+                  div.member_body_address
+                    div.member_body_address_icon
+                      = image_tag "position.png", width: 10
+                    - if !@user[i].detail.address.nil?
+                      = @user[i].detail.address
+                  div.member_body_languages
+                    div.member_body_languages_icon
+                      = image_tag "languages.png", width: 10
+                    - if !@user[i].detail.languages.nil?
+                      = @user[i].detail.languages
+
+                div.member_body_detail_inline
+                  div.member_body_skill_list
+                    - if !@memberskills[i].blank?
+                      - @memberskills[i].each_with_index do |memberskills, j|
+                        p.member_body_skill_list_item = @memberskills[i][j].title
+
+                div.member_body_introduction
+                  - if !@user[i].detail.introduction.nil?
+                    p.member_body_introduction_txt
+                      = @user[i].detail.introduction
+
+
+            div.team_box_body_member_down
+              div.panel_detail_info
+                - if !@paperclip.nil?
+                  - @paperclip.each_with_index do |paperclip, i|
+                    = @paperclip[i].portfolio_data
+                    br
+
+                div.panel_detail_info_cv
+                  - if !@career[i].nil?
+                      div.panel_detail_info_cv_title
+                        h4.panel_detail_info_cv_title_txt 経験
+
+                      - @career[i].each_with_index do |career, j|
+                        div.panel_detail_info_cv_period
+                          div.panel_detail_info_cv_period_tag
+                            p.panel_detail_info_cv_period_tag_txt 期間
+                          div.panel_detail_info_cv_period_time
+                            h5.panel_detail_info_cv_period_time_txt_start
+                              = @career[i][j].start_duration.strftime("%Y年%-m月")
+                            h5.panel_detail_info_cv_period_time_txt 〜
+                            h5.panel_detail_info_cv_period_time_txt_end
+                              = @career[i][j].end_duration.strftime("%Y年%-m月")
+                          div.panel_detail_info_cv_project_info
+                            p.panel_detail_info_cv_project_info_txt プロジェクト概要
+                            textarea.panel_detail_info_cv_project_info_desc readonly="true"
+                              = @career[i][j].description
+
+                div.panel_detail_info_portfolio
+                  - if @user[i].paperclip
+                    div.panel_detail_info_portfolio_title
+                      h4.panel_detail_info_portfolio_title_txt ポートフォリオ
+                    div.panel_detail_info_portfolio_preview
+                      div.detail_info_portfolio_preview_name
+                        div.profile_setting_portfolio_upload
+                          = link_to @portfolio[i], target: '_blank', class: 'portfolio_preview_link'
+                            span.clickable_object
+                              = content_tag :object, width: '250', data: @thumbnail[i] do
+
+                        div.profile_setting_input
+                          div.profile_setting_website
+                            = link_to @user[i].paperclip.link, target: '_blank'
+
+              div.readmore_button
+                button.readmore_button_text
+                div.readmore_arrow
+                  span.rmic.rmarw_b
+
+
+      div.back_button_center
+        = link_to t('back'), admin_organizations_teams_path
+
+javascript:
+  var acc = document.getElementsByClassName("readmore_button");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.prev();
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+  }

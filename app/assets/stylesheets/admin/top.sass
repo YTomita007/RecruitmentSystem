@@ -1,0 +1,46 @@
+@import "components/colors.sass"
+
+.admin_user_page_box_container_operation
+  .admin_container_categories_page
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-wrap: wrap
+    margin-top: 32px
+    .admin_container_category_page
+      width: 250px
+      margin-left: 16px
+      margin-right: 16px
+      margin-bottom: 1.875rem
+      .admin_container_category_item
+        color: $color_white
+        border-radius: 4px
+        border: 0
+        box-shadow: 6px 11px 41px -28px #a99de7
+        -webkit-box-shadow: 6px 11px 41px -28px #a99de7
+        transition: .5s
+        &.darkred
+          background: linear-gradient(316deg, #c10b27, #b55073)
+        &.softblue
+          background: linear-gradient(230deg, #759bff, #843cf6)
+        &:hover
+          transform: scale(1.1)
+        .admin_category_item_button
+          text-align: center
+          padding: 1.8rem 0
+          img
+            height: 35px
+            margin: 0 auto
+          h4
+            font-size: 18px
+
+  .admin_user_page_buttom_option
+    .admin_user_page_buttom_button_back
+      text-align: center
+      .admin_page_button_back
+        border-radius: 2px
+        background-color: $color_red
+        color: $color_white
+        padding: 8px 18px
+        min-width: 200px
+      

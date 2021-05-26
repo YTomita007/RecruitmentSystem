@@ -1,0 +1,242 @@
+@import "components/colors.sass"
+
+.team_page_box_container
+  width: 100%
+  max-width: 1280px
+  margin: 0 auto
+  .team_box_container
+    background-color: #ffffff
+    border-radius: 8px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    padding: 32px 5%
+    .team_box_container_head
+      padding: 16px 0
+    .team_box_container_body
+      padding: 16px 0
+      .team_box_body_members
+        .team_box_body_member
+          border: 1px solid rgba(0, 0, 0, 0.12)
+          margin-bottom: 32px
+          .team_box_body_member_up
+            padding: 32px 4%
+            display: flex
+            justify-content: flex-start
+            align-items: end
+
+            .member_body_left
+              min-width: 90px
+              .member_body_profile_pic
+                img
+                  width: 80px
+                  height: 80px
+                  border-radius: 50%
+                  object-fit: cover
+                  margin: 0 auto
+              .member_body_schedule
+                padding-top: 12px
+
+            .member_body_right
+              padding-left: 4%
+              width: 100%
+              .member_body_inline_namerole
+                display: flex
+                justify-content: space-between
+                width: 100%
+                @media (max-width: 650px)
+                  display: block
+                .member_body_fullname
+                  padding-bottom: 8px
+                  @media (max-width: 650px)
+                    padding-bottom: 0px
+                  .member_body_fullname_txt
+                    font-size: 18px
+                    font-weight: 600
+                
+                .member_body_answer
+                  h4
+                    border-radius: 2px
+                    padding: 0px 8px
+                    @media (max-width: 650px)
+                      max-width: fit-content
+                    &.member_body_answer_txt
+                      color: $color_white
+                      background-color: $color_green
+                    &.member_body_answer_txt_maybe
+                      color: $color_white
+                      background-color: $color_darkgrey
+                    &.member_body_answer_txt_no
+                      color: $color_white
+                      background-color: $color_red
+
+                
+                .member_body_role
+                  h4.member_body_role_txt
+                    color: $color_darkgreen
+                
+
+              .member_body_detail_inline
+                display: flex
+                align-items: center
+                justify-content: flex-start
+                @media (max-width: 650px)
+                  padding-top: 12px
+                  display: block
+                .member_body_languages
+                  @media (max-width: 650px)
+                    padding-left: 0px
+                .member_body_address, .member_body_languages
+                  display: flex
+                  align-items: center
+                  justify-content: flex-start
+                  color: $color_darkgrey
+                  img
+                    margin-right: 8px
+
+              .member_body_skill_list
+                display: flex
+                justify-content: flex-start
+                flex-wrap: wrap
+                align-items: center
+                padding-top: 8px
+                p.member_body_skill_list_item
+                  padding: 4px 8px
+                  background: #41b883
+                  color: $color_white
+                  border-radius: 2px
+                  margin-right: 16px
+                  margin-top: 6px
+
+              .member_body_introduction
+                max-width: 550px
+                padding-top: 8px
+                textarea.member_body_introduction_txt
+                  color: $color_black
+                  width: 100%
+                  min-height: 100px
+
+        .team_box_body_member_down
+          .panel_detail_info
+            padding: 0 18px
+            background-color: white
+            max-height: 0
+            overflow: hidden
+            transition: max-height 0.2s ease-out
+
+          .readmore_button
+            display: flex
+            justify-content: center
+            align-items: center
+            background-color: $color_grey
+            color: #444
+            cursor: pointer
+            padding: 18px
+            width: 100%
+            border: none
+            outline: none
+            font-size: 15px
+            transition: 0.4s
+            margin-top: 16px
+            border-top: 1px solid rgba(0, 0, 0, 0.12)
+
+            &.active
+              background-color: #ccc
+              button.readmore_button_text:after
+                content: '閉じる'
+
+            button.readmore_button_text:after
+              content: 'もっと見る'
+
+            .readmore_arrow
+              padding-left: 12px
+              .rmic
+                position: relative
+                padding: 0 0 0 8px
+
+                &:before, &:after
+                  display: block
+                  position: absolute
+                  content: ""
+                  top: 0
+                  left: 0
+
+              .rmarw_b:before
+                top: 4px
+                width: 8px
+                height: 8px
+                border-bottom: 2px solid $color_darkgrey
+                border-right: 2px solid $color_darkgrey
+                -webkit-transform: rotate(45deg)
+                transform: rotate(45deg)
+                transition: 0.5s
+
+              .rmarw_t:before
+                top: 8px
+                width: 8px
+                height: 8px
+                border-top: 2px solid $color_darkgrey
+                border-right: 2px solid $color_darkgrey
+                -webkit-transform: rotate(-45deg)
+                transform: rotate(-45deg)
+                transition: 0.5s
+
+          .panel_detail_info_cv
+            border-top: 1px solid rgba(0, 0, 0, 0.12)
+            padding: 32px 4% 24px 4%
+            .panel_detail_info_cv_title
+              h4.panel_detail_info_cv_title_txt
+                font-size: 18px
+                padding-bottom: 24px
+            .panel_detail_info_cv_period
+              border-left: 5px solid $color_grey
+              padding-left: 24px
+              padding-bottom: 32px
+              font-size: 14px
+              .panel_detail_info_cv_period_tag
+                padding-bottom: 12px
+                p.panel_detail_info_cv_period_tag_txt
+                  color: $color_black
+                  font-size: 14px
+              .panel_detail_info_cv_period_time
+                display: flex
+                justify-content: flex-start
+                align-items: center
+                padding-bottom: 12px
+              .panel_detail_info_cv_project_info
+                p.panel_detail_info_cv_project_info_txt
+                  color: $color_black
+                  padding-bottom: 28px
+                textarea.panel_detail_info_cv_project_info_desc
+                  border: 1px solid $color_grey
+                  resize: none
+                  padding: 12px
+                  border-radius: 4px
+                  height: 100px
+                  width: 100%
+                  color: $color_black
+
+          .panel_detail_info_portfolio
+            padding: 18px 4%
+            .panel_detail_info_portfolio_title
+              padding-bottom: 18px
+              h4.panel_detail_info_portfolio_title_txt
+                font-size: 18px
+            .panel_detail_info_portfolio_preview
+              .detail_info_portfolio_preview_name
+                .profile_setting_portfolio_upload
+
+          .panel_detail_info_website
+            margin-top: 16px
+            .panel_detail_info_website_link
+              max-width: 350px
+              word-break: break-all
+              padding: 12px
+              border: 1px solid
+
+.back_button_center
+  text-align: center
+  width: 100%
+  a
+    padding: 8px 64px
+    background-color: $color_red
+    color: $color_white
+    border-radius: 2px

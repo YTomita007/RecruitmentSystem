@@ -1,0 +1,55 @@
+@import "components/colors.sass"
+
+.profile_setting_box_body
+  .profile_setting_box_body_items
+    .profile_setting_box_body_item
+      padding: 12px 0
+      
+      // Portoflio Edit
+      .split_div
+        display: flex
+        flex-wrap: wrap-reverse
+        justify-content: space-between                
+        .profile_setting_item_portfolio
+          max-width: 280px
+          margin: 0 0 0 auto
+          margin-bottom: 48px
+          height: 180px
+          .profile_setting_portfolio_upload
+            img
+              max-width: 250px
+              margin: 0 0 0 auto
+            object
+              max-width: 350px
+
+          .profile_setting_input
+            width: 100%
+            .profile_setting_website
+              text-align: right
+      
+      // Portoflio Show
+      .profile_setting_portfolio_link
+        width: 50%
+        text-align: center
+        span.profile_setting_portfolio_link_btn
+          margin-top: 24px
+          background-color: $color_red
+          color: $color_white
+          border-radius: 2px
+          padding: 8px 16px
+          
+      .profile_setting_item_portfolios
+        .profile_setting_item_portfolio
+          margin-bottom: 48px
+          .profile_setting_portfolio_upload
+            a.portfolio_preview_link
+              position: relative
+              z-index: 1
+              span.clickable_object
+                display: inline-block
+                object
+                  position: relative
+                  z-index: -1
+            img
+              max-width: 250px
+              margin: 0 auto 0 0

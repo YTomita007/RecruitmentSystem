@@ -1,0 +1,2 @@
+module PaperclipsHelper
+end

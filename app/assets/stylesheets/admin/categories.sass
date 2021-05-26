@@ -1,0 +1,114 @@
+@import "components/colors.sass"
+
+.category_page_box
+  width: 100%
+  max-width: 1280px
+  margin: 0 auto
+  margin-top: -32px
+
+  .category_page_box_container
+    background-color: #ffffff
+    border-radius: 8px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    padding: 16px
+    &:not(:last-child)
+      margin-bottom: 48px
+
+    .category_page_box_container_operation
+      .category_container_operation_head
+        display: flex
+        justify-content: space-between
+        align-items: center
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12)
+        padding: 0 8px 8px 8px
+        .category_container_operation_side
+          display: flex
+          align-items: center
+          .category_container_operation_title
+            h3.category_container_operation_title_txt
+              font-size: 18px
+              padding-left: 18px
+              padding-right: 18px
+              border-left: 5px solid $color_blue
+
+    .section_category
+      width: 90%
+      max-width: 1280px
+      margin: 10px auto
+      @media (max-width: 768px)
+        width: 100%
+
+      .category_box
+        background-color: $color_white
+        border-radius: 8px
+
+        .category_box_options
+          .category_box_title
+            text-align: center
+            .category_box_title_txt
+            font-size: 24px
+            line-height: 1.8
+            padding-bottom: 36px
+
+          .category_box_options_items
+            border: 2px solid #b9b9b9
+            padding: 19px 0
+            min-width: 155px
+            text-align: center
+            border-radius: 6px
+            cursor: pointer
+            @media (max-width: 768px)
+              margin-bottom: 24px
+
+          .category_box_tables
+            border: 2px solid #b9b9b9
+            padding: 19px 0
+            min-width: 155px
+            text-align: center
+            border-radius: 6px
+            @media (max-width: 768px)
+              margin-bottom: 24px
+            .category_box_options_table
+              text-align: center
+              width: 100%
+              .category_box_options_items_head
+                background-color: $color_green
+                border: 2px solid #b9b9b9
+                padding: 10px 0
+                min-width: 155px
+                text-align: center
+                border-radius: 6px
+                @media (max-width: 768px)
+                  margin-bottom: 24px
+              .category_box_options_items_body
+                border: 2px solid #b9b9b9
+                padding: 3px 0
+                min-width: 155px
+                text-align: center
+                border-radius: 6px
+                @media (max-width: 768px)
+                  margin-bottom: 24px
+              .category_box_table_command
+                button.category_box_table_command_txt
+                  padding: 3px 0
+                  border-radius: 2px
+                  cursor: pointer
+                  font-weight: 500
+
+
+            .category_box_options_command
+              button.category_box_options_command_txt
+                padding-top: 8px
+                padding-bottom: 8px
+                border-radius: 2px
+                cursor: pointer
+                font-weight: 500
+
+            .category_decide_button_command
+              margin-right: 10px
+              margin-left: auto
+              button.category_decide_button
+                border: 1px solid $color_red
+                border-radius: 2px
+                padding: 8px 16px
+                color: $color_red

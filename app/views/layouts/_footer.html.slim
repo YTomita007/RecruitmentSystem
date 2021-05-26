@@ -1,0 +1,18 @@
+footer
+  div.footer
+    div.footer_content
+      div.workeasy_credits
+        p.workeasy_credits_text © #{Time.now.year}
+          Enterprise Inc.
+      div.workeasy_contract_conditions
+        / p.workeasy_terms_service 利用規約
+        = link_to consult_new_general_inquiry_path do
+          p.workeasy_inquiry 無料相談
+        = link_to general_new_general_inquiry_path do
+          p.workeasy_inquiry
+            = t('inquiry')
+        / = link_to page1_general_helppages_path do
+        /   p.workeasy_inquiry
+        /     = t('helppage')
+        = link_to general_policy_index_path do
+          p.workeasy_policy プライバシーポリシー

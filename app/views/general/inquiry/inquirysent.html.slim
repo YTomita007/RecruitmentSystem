@@ -1,0 +1,20 @@
+div.inquiry_page
+  div.inquiry_page_box_container
+    div.box_container_title
+      h3.box_container_title_txt お申込み完了しました！
+
+    div.inquiry_page_box_form
+      p.inquiry_page_sent_txt
+        | この度は、workeasyの無料相談にお申込み頂きありがとうございます。
+        | お申込内容を拝見し、専任のスタッフからお電話またはメールをさせて頂きます。
+        | 万が一、2-3日経っても連絡がない場合は、
+        | お電話（
+        = link_to "092-515-1934", "tel:0925151934"
+        | ）または、メール（
+        = mail_to "info@workeasy.jp", "info@workeasy.jp", target: '_blank'
+        | ）まで
+        | ご連絡いただけますようお願いいたします。
+
+      div.back_top_button
+        button.inquiry_back_top_button
+          = link_to t('back'), root_path

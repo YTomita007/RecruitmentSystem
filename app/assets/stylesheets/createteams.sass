@@ -1,0 +1,342 @@
+@import "components/colors.sass"
+
+.section_search
+  width: 90%
+  max-width: 1280px
+  margin: 0 auto
+  @media (max-width: 768px)
+    width: 100%
+
+  button:focus
+    outline: 0
+
+  .seach_question_box
+    background-color: $color_white
+    border-radius: 8px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    padding: 0 8px
+
+    .question_box_content
+      padding-top: 48px
+      padding-bottom: 48px
+      max-width: 735px
+      margin: 0 auto
+
+      .question_innerbox
+        max-width: 735px
+        margin: 0 auto
+
+        .question_box_logo
+          img
+            margin: 0 auto
+
+        .question_box_progess
+          margin: 0 auto
+          text-align: center
+
+          progress.question_progress
+            height: 3px
+            width: 100%
+            max-width: 535px
+            -webkit-appearance: none
+            -moz-appearance: none
+            appearance: none
+
+            &::-webkit-progress-bar
+              background-color: #d8d8d8
+
+            &::-webkit-progress-value
+              background-color: $color_red
+
+        .question_box_title.start_panel
+          padding-bottom: 0px
+          h2.question_box_title_txt
+            font-size: 25px
+            font-weight: 600
+
+        .question_box_title
+          text-align: center
+          padding: 24px 0 32px
+
+          .question_box_subtitle_txt
+            padding-top: 8px
+            font-size: 17px
+            font-weight: 400
+            margin-bottom: -32px
+            span.red
+              color: $color_red
+
+          h2.question_box_title_txt
+            font-size: 20px
+            font-weight: 600
+          p.question_box_subtitle_english
+            font-size: 18px
+            font-weight: 600
+            padding: 8px 0
+            color: $color_red
+
+        .question_box_options
+          .question_box_description
+            text-align: center
+            .question_box_description_text
+            font-size: 16px
+            line-height: 1.8
+            padding-bottom: 36px
+
+          .question_box_options_items
+            display: flex
+            justify-content: space-around
+            align-items: center
+            flex-flow: row wrap
+            padding: 24px 8px 12px 8px
+            &:nth-child(2)
+              padding: 0px 8px
+
+            .question_box_label
+              input[type=radio]
+                position: absolute
+                clip: rect(0,0,0,0)
+                pointer-events: none
+
+              .question_box_options_item
+                border: 2px solid #b9b9b9
+                padding: 19px 0
+                min-width: 155px
+                text-align: center
+                border-radius: 6px
+                cursor: pointer
+                margin-bottom: 24px
+                @media (max-width: 768px)
+                  margin-bottom: 24px
+
+              .box_options_item_txt
+                color: #747474
+                font-size: 16px
+
+              & .active
+                border-color: $color_red
+                background-color: rgba(229, 0, 45, 0.05)
+                opacity: 1 !important
+                .box_options_item_txt
+                  color: $color_red
+
+              & .discard
+                opacity: 0.5
+
+
+          .question_box_start_search
+            text-align: center
+            button.start_search
+              width: 180px
+              height: 40px
+              background-color: $color_red
+              color: $color_white
+              border-radius: 2px
+
+        .search_box_results
+          background-color: $color_lightgrey
+          border-radius: 7px
+          display: flex
+          flex-wrap: wrap
+          justify-content: space-between
+          padding: 18px 24px
+          margin: 0 8px
+
+          .search_result_member
+            display: flex
+            align-items: center
+            padding: 12px 0px
+            min-width: 310px
+            @media (max-width: 560px)
+              min-width: auto
+
+            .search_member_pic
+              padding-right: 8px
+              @media (max-width: 560px)
+                min-width: 50px
+              img
+                width: 75px
+                height: 75px
+                border-radius: 50%
+                object-fit: cover
+                @media (max-width: 560px)
+                  width: 45px
+                  height: 45px
+
+            .search_member_info
+              .search_member_position
+                color: $color_red
+                font-size: 18px
+
+              .search_member_work
+                display: flex
+                .search_member_hour
+                  display: flex
+
+                .search_member_week
+                  padding-left: 24px
+
+              .search_member_name
+                .member_name_acronym
+                  color: $color_black
+                  font-size: 14px
+
+        .sns_logos
+          display: flex
+          justify-content: center
+          padding-top: 36px
+          div
+            padding-left: 4px
+            padding-right: 4px
+
+    .question_box_commands
+      display: flex
+      justify-content: space-evenly
+      align-items: center
+      padding-top: 24px
+      padding-bottom: 24px
+      border-top: 1px solid rgba(0, 0, 0, 0.12)
+      &#no_border
+        border: none
+        padding-bottom: 0px
+
+      .box_commands_space
+        display: flex
+        justify-content: space-evenly
+        justify-content: space-around
+        width: 100%
+        max-width: 732px
+        margin: 0 auto
+
+
+        .question_box_command_back
+          .question_box_command_back_txt
+            background-color: $color_white
+            color: $color_red
+            width: 140px
+            padding-top: 8px
+            padding-bottom: 8px
+            border-radius: 2px
+            border: 1px solid $color_red
+            cursor: pointer
+            font-size: 14px
+            font-weight: 500
+
+        .question_box_command_next
+          button.question_box_command_next_txt
+            background-color: $color_red
+            color: $color_white
+            width: 140px
+            padding-top: 8px
+            padding-bottom: 8px
+            border-radius: 2px
+            cursor: pointer
+            font-size: 14px
+            font-weight: 500
+            &:disabled
+              cursor: not-allowed
+              background-color: $color_darkgrey
+
+    .question_box_commands_last
+      display: flex
+      justify-content: space-evenly
+      align-items: center
+      padding-top: 24px
+      padding-bottom: 24px
+      max-width: 450px
+      margin: 0 auto
+      .question_box_command_reset
+        background-color: $color_white
+        color: $color_red
+        border-radius: 2px
+        border: 1px solid $color_red
+        width: 150px
+        padding-top: 10px
+        padding-bottom: 10px
+        border-radius: 2px
+        cursor: pointer
+        font-size: 14px
+        font-weight: 500
+        text-align: center
+      .question_box_command_last
+        a, div
+          margin: 0 auto
+        button.question_box_command_last_txt
+          background-color: $color_red
+          color: $color_white
+          width: 150px
+          padding-top: 10px
+          padding-bottom: 10px
+          border-radius: 2px
+          cursor: pointer
+          font-size: 14px
+          font-weight: 500
+
+      .question_box_commands_last_back
+        display: flex
+        justify-content: space-evenly
+        align-items: center
+        padding-top: 24px
+        padding-bottom: 24px
+        &#no_border
+          border: none
+          padding-bottom: 0px
+
+        .box_commands_space_back
+          display: flex
+          justify-content: space-evenly
+          width: 100%
+          max-width: 732px
+          padding-right: 106px
+
+          .question_box_command_back
+            .question_box_command_back_txt
+              background-color: $color_white
+              color: $color_red
+              width: 140px
+              padding-top: 8px
+              padding-bottom: 8px
+              border-radius: 2px
+              border: 1px solid $color_red
+              cursor: pointer
+              font-size: 14px
+              font-weight: 500
+
+
+
+    .question_box_close_command
+      display: flex
+      justify-content: center
+      padding-bottom: 30px
+      color: $color_darkgrey
+      button
+        font-size: 14px
+
+
+    .team_total_infos
+      text-align: center
+      margin-top: -24px
+      .team_total_price
+        display: flex
+        justify-content: center
+        align-items: baseline
+        .team_total_price_txt
+          font-size: 24px
+          font-weight: 500
+          color: $color_black
+        .team_total_price_calc
+          font-size: 30px
+          font-weight: 600
+          color: $color_red
+          transform: scaleY(1.15)
+          padding-left: 4px
+          padding-right: 4px
+      .team_total_info_note
+        font-size: 14px
+        font-weight: lighter
+        padding-top: 8px
+
+
+#teammember_result
+  opacity: 0
+  transition: 1s

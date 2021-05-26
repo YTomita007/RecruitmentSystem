@@ -1,0 +1,26 @@
+version: '3'
+services:
+ web:
+   build: .
+   container_name: wke_web
+   command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+   volumes:
+     - .:/app
+   ports:
+     - 3000:3000
+   depends_on:
+     - db
+   tty: true
+   stdin_open: true
+ db:
+   image: mysql:5.7
+   container_name: wke_db
+   volumes:
+     - db-volume:/var/lib/mysql
+   environment:
+     MYSQL_ROOT_PASSWORD: root
+     MYSQL_DATABASE: wke_production
+     MYSQL_DATABASE: wke_development
+     MYSQL_DATABASE: wke_test
+volumes:
+ db-volume:

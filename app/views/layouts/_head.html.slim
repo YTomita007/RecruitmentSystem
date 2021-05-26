@@ -1,0 +1,353 @@
+header
+  div.header
+    div.header_items
+     div.header_item
+      div.header_logo
+        = link_to image_tag("/assets/workeasylogo.svg", class: "style_image", width: 150), root_path
+
+     - if !@percent.nil?
+       div.header_item.progress_bar
+         - if @percent == 1
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 10%;"
+           p.progress_percent 10%
+         - elsif @percent == 2
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 20%;"
+           p.progress_percent 20%
+         - elsif @percent == 3
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 30%;"
+           p.progress_percent 30%
+         - elsif @percent == 4
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 40%;"
+           p.progress_percent 40%
+         - elsif @percent == 5
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 50%;"
+           p.progress_percent 50%
+         - elsif @percent == 6
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 60%;"
+           p.progress_percent 60%
+         - elsif @percent == 7
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 70%;"
+           p.progress_percent 70%
+         - elsif @percent == 8
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 80%;"
+           p.progress_percent 80%
+         - elsif @percent == 9
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 90%;"
+           p.progress_percent 90%
+         - elsif @percent == 10
+           div.responsive_bar
+             div.search-bar-container
+               div.linebar
+                 div.bar-container
+                   span.progressbar style="width: 99%;"
+           p.progress_percent 99%
+
+     div.header_item#user_display_mbmemnu
+      div.mobile-menu
+       div.button_container#toggle
+         span.top
+         span.middle
+         span.bottom
+       div.shadow
+       div.mobile_overlay#mobile_overlay
+         nav.mboverlay
+          div.mboverlay_item
+           - if @current_user
+             - if @current_user.administrator
+               = link_to t('to_admin'), admin_root_path
+
+          div.mboverlay_item
+           div.profile_pic
+             - if @current_user
+               - if @current_user.picture.present?
+                  = image_tag @facelogo
+               - else
+                 = image_tag "profile_default.png"
+             - else
+                 = image_tag "profile_default.png"
+          div.mboverlay_item
+           div.profile_name
+             - if !@current_user
+               = link_to t('newresist'), step1_new_user_path, data: {"turbolinks" => false}
+               br
+               = link_to t('login'), new_session_path
+
+             - if @current_user
+               div.user_display_name
+                 h5 = @current_user.username + " 様"
+               div.user_display_role
+                 - if @current_user.role == 1
+                   h6.company_name = @current_user.detail.company
+                 - else
+                   h6.role_name = "クリエイター"
+
+          div.mboverlay_item
+            - if @current_user
+              - if @current_user.role == 1
+                = link_to new_createteams_category_path do
+                  div.mboverlay_item
+                    div.menu_start_search チームを作る
+
+            - if @current_user
+              = link_to root_path do
+                div.mboverlay_item
+                  div.menu_mypage マイページ
+
+              = link_to users_setting_path(@current_user) do
+                div.mboverlay_item
+                  div.menu_item_box
+                    div.menu_item_box_icon
+                      = image_tag("/assets/pencil.png", width: 16)
+                    div.menu_item_box_text
+                      = t('pro-setting')
+
+              / = link_to page1_general_helppages_path do
+              /   div.mboverlay_item
+              /     div.menu_item_box
+              /       div.menu_item_box_icon
+              /         = image_tag("/assets/callout.png", width: 16)
+              /       div.menu_item_box_text
+              /         = t('helppage')
+
+              = link_to consult_new_general_inquiry_path do
+                div.mboverlay_item
+                  div.menu_item_box
+                    div.menu_item_box_icon
+                      = image_tag("/assets/helpdesk.svg", width: 16)
+                    div.menu_item_box_text 無料相談
+
+              - if @current_user
+                - if @current_user.administrator == true
+                  - if @current_user.role == 1
+                    = link_to change_users_path do
+                      div.mboverlay_item
+                        div.menu_item_box
+                          div.menu_item_box_icon
+                            = image_tag("/assets/cherry.svg", width: 16)
+                          div.menu_item_box_text
+                            = t('creator')
+                  - else
+                    = link_to change_users_path do
+                      div.mboverlay_item
+                        div.menu_item_box
+                          div.menu_item_box_icon
+                            = image_tag("/assets/cherry.svg", width: 16)
+                          div.menu_item_box_text
+                            = t('enterprise')
+                - else
+                  - if @judge == true
+                    - if @current_user.role == 1
+                      = link_to change_users_path do
+                        div.mboverlay_item
+                          div.menu_item_box
+                            div.menu_item_box_icon
+                              = image_tag("/assets/cherry.svg", width: 16)
+                            div.menu_item_box_text
+                              = t('creator')
+                    - else
+                      = link_to change_users_path do
+                        div.mboverlay_item
+                          div.menu_item_box
+                            div.menu_item_box_icon
+                              = image_tag("/assets/cherry.svg", width: 16)
+                            div.menu_item_box_text
+                              = t('enterprise')
+
+
+              = link_to session_path, method: :delete, data: { confirm: "ログアウトしますか？" } do
+                div.mboverlay_item
+                  div.menu_item_box
+                    div.menu_item_box_icon
+                      = image_tag("/assets/login.png", width: 16)
+                    div.menu_item_box_text
+                      = t('logout')
+
+
+     div.header_item#user_display_memnu
+      div.header_account
+        / - if @current_user.nil?
+        /   div.profile_pic
+        /     = link_to page1_general_helppages_path do
+        /       div.menu_item
+        /         div.menu_item_box
+        /           div.menu_item_box_icon
+        /             = image_tag("/assets/callout.png", width: 16)
+        /
+        /   div.profile_pic
+        /     = link_to consult_new_general_inquiry_path do
+        /       div.menu_item
+        /         div.menu_item_box
+        /           div.menu_item_box_icon
+        /             = image_tag("/assets/helpdesk.svg", width: 16)
+
+        div.registration
+          - if @current_user
+            - if @current_user.administrator
+              = link_to t('to_admin'), admin_root_path
+
+        div.profile_pic
+          - if @current_user
+            - if @current_user.picture.present?
+               = image_tag @facelogo
+            - else
+              = image_tag "profile_default.png"
+          - else
+              = image_tag "profile_default.png"
+
+        div.profile_name
+          - if !@current_user
+            = link_to t('newresist'), step1_new_user_path, data: {"turbolinks" => false}
+            br
+            = link_to t('login'), new_session_path
+            / div.user_display_name
+            /   h2 = "ゲスト 様"
+            / div.user_display_role
+            /   h6.role_name = "ここにクリック"
+            / 
+            /   div.overlay#overlay
+            /     nav.overlay-menu
+            /       div.menu_contents
+            /         div.menu_content
+            /           = link_to step1_new_user_path, data: {"turbolinks" => false} do
+            /             div.menu_item
+            /               = t('newresist')
+            /           = link_to new_session_path do
+            /             div.menu_item
+            /               = t('login')
+            /           = link_to consult_new_general_inquiry_path do
+            /             div.menu_item
+            /               = "無料相談"
+            /           = link_to new_workstyle_question_path do
+            /             div.menu_item
+            /               div.menu_start_search 働き方診断
+
+          - if @current_user
+            div.user_display_name
+              h5 = @current_user.username + " 様"
+            div.user_display_role
+              - if @current_user.role == 1
+                h6.company_name = @current_user.detail.company
+              - else
+                h6.role_name = "クリエイター"
+
+              div.overlay#overlay
+                nav.overlay-menu
+                  div.menu_contents
+                    div.menu_content
+                      - if @current_user.role == 1
+                        = link_to new_createteams_category_path do
+                          div.menu_item
+                            div.menu_start_search チームを作る
+
+                      - if @current_user
+                        = link_to root_path do
+                          div.menu_item
+                            div.menu_mypage マイページ
+
+                        = link_to users_setting_path(@current_user) do
+                          div.menu_item
+                            div.menu_item_box
+                              div.menu_item_box_icon
+                                = image_tag("/assets/pencil.png", width: 16)
+                              div.menu_item_box_text
+                                = t('pro-setting')
+
+                        / = link_to page1_general_helppages_path do
+                        /   div.menu_item
+                        /     div.menu_item_box
+                        /       div.menu_item_box_icon
+                        /         = image_tag("/assets/callout.png", width: 16)
+                        /       div.menu_item_box_text
+                        /         = t('helppage')
+
+                        = link_to consult_new_general_inquiry_path do
+                          div.menu_item
+                            div.menu_item_box
+                              div.menu_item_box_icon
+                                = image_tag("/assets/helpdesk.svg", width: 16)
+                              div.menu_item_box_text 無料相談
+
+                        - if @current_user
+                          - if @current_user.administrator == true
+                            - if @current_user.role == 1
+                              = link_to change_users_path do
+                                div.menu_item
+                                  div.menu_item_box
+                                    div.menu_item_box_icon
+                                      = image_tag("/assets/cherry.svg", width: 16)
+                                    div.menu_item_box_text
+                                      = t('creator')
+                            - else
+                              = link_to change_users_path do
+                                div.menu_item
+                                  div.menu_item_box
+                                    div.menu_item_box_icon
+                                      = image_tag("/assets/cherry.svg", width: 16)
+                                    div.menu_item_box_text
+                                      = t('enterprise')
+                          - else
+                            - if @judge == true
+                              - if @current_user.role == 1
+                                = link_to change_users_path do
+                                  div.menu_item
+                                    div.menu_item_box
+                                      div.menu_item_box_icon
+                                        = image_tag("/assets/cherry.svg", width: 16)
+                                      div.menu_item_box_text
+                                        = t('creator')
+                              - else
+                                = link_to change_users_path do
+                                  div.menu_item
+                                    div.menu_item_box
+                                      div.menu_item_box_icon
+                                        = image_tag("/assets/cherry.svg", width: 16)
+                                      div.menu_item_box_text
+                                        = t('enterprise')
+
+                          = link_to session_path, method: :delete, data: { confirm: "ログアウトしますか？" } do
+                            div.menu_item
+                              div.menu_item_box
+                                div.menu_item_box_icon
+                                  = image_tag("/assets/login.png", width: 16)
+                                div.menu_item_box_text
+                                  = t('logout')
+
+        - if @current_user    
+          div.clmn_arw
+            span.mnic.arw_b

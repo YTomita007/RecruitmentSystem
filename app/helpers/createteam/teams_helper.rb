@@ -1,0 +1,2 @@
+module Createteam::TeamsHelper
+end

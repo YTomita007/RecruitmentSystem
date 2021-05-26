@@ -1,0 +1,29 @@
+div.user_reset_password_box
+  div.user_reset_password_box_container
+    div.reset_password_innerbox
+      div.reset_password_box_logo
+       = image_tag("/assets/cherry.svg", width: 45)
+    div.reset_container_title
+      h3.reset_container_title_txt パスワード再設定
+    div.reset_password_body
+      div.reset_password_message
+        p.reset_password_txt
+          | パスワードのリセットを行います。
+          br
+          | 新しいパスワードを入力してください。
+
+        = form_for @user do |f|
+          div.reset_inline_field
+            div.reset_inline_input
+              label パスワード再設定のメールアドレス
+            div.reset_inline_input
+              = f.email_field :email, placeholder: "info@workeasy.jp", required: "", readonly: true
+            div.reset_inline_input
+              label 新しいパスワード
+            div.reset_inline_input
+              = f.password_field :password, placeholder: "半角英数字8文字以上", pattern: ".{8,}", required: ""
+
+          div.reset_password_login_button
+            button.to_login_button type="submit"
+              .actions
+                = f.submit t 'passwordupdate'

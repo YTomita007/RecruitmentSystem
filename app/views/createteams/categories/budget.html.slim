@@ -1,0 +1,84 @@
+- if flash.any?
+  .alert.alert-danger.pr-0
+    ul.mb-0.pl-3
+      - flash.each do |_message_type, message|
+        div.message_alert
+          div.message_alert_danger
+            div.message_alert_content
+              div.message_alert_check_icon
+                svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve"
+                  g id="check_icon"
+                    path style="fill:#e6002d" d="M8.4,15.8l9.4-9.5l-1.5-1.5l-8,8L4.6,9l-1.5,1.5L8.4,15.8z M10.5,0c1.9,0,3.7,0.5,5.3,1.4c1.6,0.9,2.8,2.2,3.7,3.7c1,1.6,1.4,3.4,1.4,5.3s-0.5,3.7-1.4,5.3c-0.9,1.6-2.2,2.8-3.7,3.7c-1.6,1-3.4,1.4-5.3,1.4s-3.7-0.5-5.3-1.4c-1.6-0.9-2.8-2.2-3.7-3.8c-1-1.6-1.4-3.4-1.4-5.3s0.5-3.7,1.4-5.3c0.9-1.6,2.2-2.8,3.8-3.8C6.8,0.5,8.6,0,10.5,0z"
+
+              div.message_alert_txt
+                h3.message_alert_display_txt
+                  = message
+
+              div.message_alert_close_icon
+                svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 96 96" enable-background="new 0 0 96 96" xml:space="preserve"
+                  polygon fill="#e6002d" points="96,14 82,0 48,34 14,0 0,14 34,48 0,82 14,96 48,62 82,96 96,82 62,48"
+
+
+section
+  div.section_search
+    div.seach_question_box
+      = form_for @team, url: createteams_teams_path do |f|
+        div.question_box_content
+          div.question_innerbox
+            div.question_box_title
+              h2.question_box_title_txt 月額予算はおいくらを考えていますか？
+
+            div.question_box_options
+              div.question_box_options_items
+                label.question_box_label
+                  = f.radio_button :id, "80" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Budget_80.png", width: 90)
+                    h4.box_options_item_txt 〜80万
+
+                label.question_box_label
+                  = f.radio_button :id, "110" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Budget_200.png", width: 90)
+                    h4.box_options_item_txt 〜110万
+
+                label.question_box_label
+                  = f.radio_button :id, "150" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Budget_300.png", width: 90)
+                    h4.box_options_item_txt 〜150万
+
+              div.question_box_options_items
+                label.question_box_label
+                  = f.radio_button :id, "180" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Budget_200.png", width: 90)
+                    h4.box_options_item_txt 〜180万
+
+                label.question_box_label
+                  = f.radio_button :id, "250" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Budget_300.png", width: 90)
+                    h4.box_options_item_txt 〜250万
+
+                label.question_box_label
+                  = f.radio_button :id, "0" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Common_other.png", width: 90)
+                    h4.box_options_item_txt 未定
+
+        div.question_box_commands
+          div.box_commands_space
+            = link_to createteams_category_path(:id), method: :get
+              div.question_box_command_back
+                button.question_box_command_back_txt
+                  = t 'back'
+            div.question_box_command_next
+              button.question_box_command_next_txt
+                = t 'next'

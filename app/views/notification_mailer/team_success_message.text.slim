@@ -1,0 +1,44 @@
+div style="cursor: auto; font-size: 12px; text-align: left; padding: 15px; line-height: 1.5;" 
+  p
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    | 　　　　　　　　　無料相談日時をお選び下さい　　　　
+    br/
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    br/
+  p
+    = User.find_by(email: @email).detail.company
+    = User.find_by(email: @email).username + "様"
+    br/
+    br/
+    | この度は、チームを結成いただき誠にありがとうございます。
+    br/
+    | 早速ではありますが、ヒアリングのお時間をいただけたらと考えております。
+    br/
+    | 下記URLをクリックして、面談の日程調整を行ってください。
+    br/
+    = link_to '面談の予約フォームへ', @reservation
+    br/
+    | すでにチームを作っている場合は、２のヒアリングの日程調整へお進み下さい。
+    br/
+    br/
+    | ヒアリング内容：現状のヒアリング、サービス内容のご説明など
+    br/
+    | ご都合の合う日程がない場合は、以下にお問合せください。
+    br/
+    | info@workeasy.jp
+    br/
+    br/
+  p
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    br/
+    | workeasy 株式会社｜workeasy運営事務局
+    br/
+    | （旧株式会社ライジングアドバンス）
+    br/
+    | Mail: info@workeasy.jp
+    br/
+    = link_to @signature, @signature
+    br/
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━

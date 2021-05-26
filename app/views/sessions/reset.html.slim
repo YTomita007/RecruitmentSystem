@@ -1,0 +1,21 @@
+div.user_reset_password_box
+  div.user_reset_password_box_container
+    div.reset_password_innerbox
+      div.reset_password_box_logo
+       = image_tag("/assets/cherry.svg", width: 45)
+    div.reset_container_title
+      h3.reset_container_title_txt パスワード再設定
+    div.reset_password_body
+      div.reset_password_message
+        p.reset_password_txt
+          | メールボックスをご確認の上、
+          br
+          | ステップに従ってパスワードの再設定を行ってください
+
+        div.reset_password_forget_button
+          = link_to step1_new_user_path
+            button.to_forget_button メールが届かない方
+
+        div.reset_password_login_button
+          = link_to new_session_path
+            button.to_login_button ログインへ

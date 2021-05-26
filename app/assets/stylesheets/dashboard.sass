@@ -1,0 +1,285 @@
+@import "components/colors.sass"
+
+.user_page_box
+  width: 100%
+  max-width: 1280px
+  margin: 0 auto
+  margin-top: -32px
+
+  .user_message_advise
+    background-color: #ffffff
+    border-radius: 8px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    padding: 16px
+    margin-bottom: 18px
+    .user_message_advise_body
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      @media (max-width: 650px)
+        display: block
+      .user_message_advise_body_left
+        display: flex
+        align-items: center
+        .user_message_advise_icon_alert
+          margin-left: 4px
+        .user_message_advise_txt
+          padding-left: 18px
+          padding-right: 18px
+          h2.user_message_advise_txt_up
+            font-size: 18px
+            font-weight: bold
+          h3.user_message_advise_txt_sub
+            font-size: 14px
+      .user_message_advise_body_right
+        margin-left: auto
+        .user_message_advise_button
+          margin-right: 10px
+          margin-left: auto
+          width: 158px
+          @media (max-width: 650px)
+            margin-top: 18px
+            margin-right: auto
+          button.user_settings_button
+            border: 1px solid $color_red
+            border-radius: 2px
+            padding: 8px 12px
+            color: $color_red
+
+  .project_count
+    margin-bottom: 14px
+
+  .user_page_box_container
+    background-color: #ffffff
+    border-radius: 8px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    padding: 16px
+    &:not(:last-child)
+      margin-bottom: 48px
+
+    .user_page_box_container_project
+      .box_container_project_head
+        display: flex
+        justify-content: space-between
+        align-items: center
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12)
+        padding: 0 8px 8px 8px
+        @media (max-width: 650px)
+          display: block
+        .box_container_project_head_left
+          display: flex
+          align-items: center
+          @media (max-width: 650px)
+            justify-content: space-between
+          .box_container_project_title
+            h3.box_container_project_title_txt
+              font-size: 18px
+              padding-left: 18px
+              padding-right: 18px
+              &.initialize
+                border-left: 5px solid $color_blue
+              &.negotiation
+                border-left: 5px solid $color_green
+              &.prepared
+                border-left: 5px solid $color_yellow
+              &.progress
+                border-left: 5px solid $color_red
+              &.complete
+                border-left: 5px solid $color_darkgrey
+
+          .box_container_project_status
+            padding: 2px 32px
+            border-radius: 120px
+            @media (max-width: 650px)
+              padding: 2px 8px
+              h4
+                min-width: 50px
+                text-align: center
+            &.initialize
+              background-color: $color_lightblue
+              color: $color_blue
+              h4.box_container_project_status_txt:before
+                content: '開始前'
+            &.negotiation
+              background-color: $color_lightgreen
+              color: $color_green
+              h4.box_container_project_status_txt:before
+                content: '商談中'
+            &.prepared
+              background-color: $color_yellow
+              color: $color_black
+              h4.box_container_project_status_txt:before
+                content: '準備中'
+            &.progress
+              background-color: $color_pink
+              color: $color_red
+              h4.box_container_project_status_txt:before
+                content: '進行中'
+            &.complete
+              background-color: $color_darkgrey
+              color: $color_black
+              h4.box_container_project_status_txt:before
+                content: '完了済'
+
+
+        .box_container_project_head_right
+          @media (max-width: 650px)
+            margin-top: 12px
+          .box_container_project_members_info
+            display: flex
+            align-items: center
+            @media (max-width: 650px)
+              justify-content: space-between
+            .box_container_project_members_info_profile_pic
+              display: flex
+              padding-right: 18px
+              .members_info_profile_pic
+                &:not(:first-child)
+                  margin-left: -14px
+                img
+                  width: 40px
+                  height: 40px
+                  border-radius: 50%
+                  object-fit: cover
+                  margin: 0 auto
+                  border: 1px solid $color_white
+
+            .box_container_project_members_info_count
+              border: 1px solid $color_grey
+              border-radius: 2px
+              padding: 10px 18px
+              .members_info_count
+                font-size: 12px
+
+
+      .box_container_project_body
+        text-align: center
+        padding-bottom: 32px
+        padding-top: 32px
+        .container_project_body_box
+          max-width: 630px
+          margin: 0 auto
+          border-radius: 8px
+          border: 1px solid rgba(0, 0, 0, 0.12)
+          padding: 16px
+          .container_project_body_title
+            .project_body_title_img
+              padding: 18px 0 18px 0
+              img
+                width: 100px
+                margin: 0 auto
+              a
+                .mboverlay_item
+                  .menu_start_search
+                    background: $color_red
+                    border-radius: 2px
+                    padding: 10px 18px
+                    color: $color_white
+                    max-width: 160px
+                    margin: 0 auto
+            .project_body_title
+              h2.project_body_title_txt
+                font-weight: bold
+                font-size: 20px
+
+          .container_project_body_description
+            padding-top: 16px
+            padding-bottom: 16px
+            p.container_project_body_description_txt
+              font-size: 14px
+
+          .container_project_body_button
+            text-align: center
+            .menu_start_search
+              width: 145px
+              margin: 0 auto
+              border-radius: 2px
+              padding-top: 6px
+              padding-bottom: 6px
+              background-color: $color_red
+              color: $color_white
+
+          .container_project_detail_button
+            text-align: center
+            .menu_start_search
+              width: 145px
+              margin: 0 auto
+              border-radius: 2px
+              padding-top: 6px
+              padding-bottom: 6px
+              background-color: $color_red
+              color: $color_white
+
+
+        .container_project_show_box
+          margin: 0 auto
+          border-radius: 8px
+          padding: 16px
+          .project_show_button
+            margin: 0 auto
+            button.project_show_button
+              padding: 8px 16px
+              margin: 0 35px
+              border: 1px solid $color_red
+              border-radius: 2px
+              color: $color_red
+
+      .box_container_preproject_body
+        text-align: center
+        padding-bottom: 32px
+        padding-top: 32px
+        .container_preproject_body_box
+          display: flex
+          align-items: center
+          justify-content: flex-start
+          max-width: 630px
+          margin: 0 auto
+          border-radius: 8px
+          border: 1px solid rgba(0, 0, 0, 0.12)
+          padding: 16px
+          .container_preproject_body_title
+            width: 35%
+            .preproject_body_title_img
+              padding: 18px 0 18px 0
+              img
+                width: 100px
+                margin: 0 auto
+
+            .preproject_body_title
+              h2.preproject_body_title_txt
+                font-weight: bold
+                font-size: 20px
+
+          .container_preproject_body_description
+            text-align: left
+            padding-top: 16px
+            padding-bottom: 16px
+            p.container_preproject_body_description_txt
+              font-size: 14px
+
+
+      .box_container_project_answer
+        text-align: center
+        padding-bottom: 32px
+        .container_project_answer_box
+          max-width: 630px
+          margin: 0 auto
+          border-radius: 8px
+          border: 1px solid rgba(0, 0, 0, 0.12)
+          padding: 16px
+          .project_answer_button
+            margin: 0 auto
+            display: flex
+            align-items: center
+            justify-content: space-around
+            button.project_answer_button_on
+              border: 1px solid $color_white
+              background-color: $color_red
+              border-radius: 2px
+              padding: 8px 16px
+              color: $color_white
+            button.project_answer_button_off
+              padding: 8px 16px
+              border: 1px solid $color_red
+              border-radius: 2px
+              color: $color_red

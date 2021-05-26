@@ -1,0 +1,2 @@
+module Users::CurriculumHelper
+end

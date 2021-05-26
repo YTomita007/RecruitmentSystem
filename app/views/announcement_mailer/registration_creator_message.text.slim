@@ -1,0 +1,52 @@
+div style="cursor: auto; font-size: 12px; text-align: left; padding: 15px; line-height: 1.5;"
+  p
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    | 　　　　　　クリエイターから新規登録がありました　　　　
+    br/
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    br/
+  p
+    | 氏名：
+    = User.find_by(email: @email).username + "様"
+    br/
+    br/
+    | ローマ字：
+    = User.find_by(email: @email).english_name + "様"
+    br/
+    br/
+    | メールアドレス：
+    = User.find_by(email: @email).email
+    br/
+    br/
+    | 電話番号：
+    = User.find_by(email: @email).detail.telephone
+    br/
+    br/
+    | クリエイター職種：
+    - if User.find_by(email: @email).detail.projectmanager
+      p プロジェクトマネージャー
+    - if User.find_by(email: @email).detail.webdesigner
+      p ウェブデザイナー
+    - if User.find_by(email: @email).detail.uiuxdesigner
+      p UI/UXデザイナー
+    - if User.find_by(email: @email).detail.frontendengineer
+      p フロントエンドエンジニア
+    - if User.find_by(email: @email).detail.backendengineer
+      p バックエンドエンジニア
+    | ステータス：働きたい
+    br/
+    br/
+  p
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    br/
+    | workeasy 株式会社｜workeasy運営事務局
+    br/
+    | （旧株式会社ライジングアドバンス）
+    br/
+    | Mail: info@workeasy.jp
+    br/
+    = link_to @signature, @signature
+    br/
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━

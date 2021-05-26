@@ -1,0 +1,206 @@
+@import "components/colors.sass"
+
+.new_user_registration
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100%
+  
+  .registration_box_container
+    background-color: $color_white
+    width: 85%
+    max-width: 540px
+    padding: 45px 16px
+    border-radius: 4px
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    max-height: 85%
+    overflow-y: scroll
+    overflow-x: hidden
+    @media (max-width: 560px)
+      width: 100%
+    
+    .registration_box_close
+      float: right
+      margin-top: -48px
+      margin-right: -20px
+      padding: 9px 11px 5px
+      line-height: 1.5rem
+      text-align: center
+      cursor: pointer
+      border-radius: 100px
+      background-color: $color_white
+      
+  .box_container_title
+    text-align: center
+    
+    h3.box_container_title_txt
+      font-size: 20px
+      font-weight: 600
+    .box_container_title_email
+      font-size: 14px
+  
+  
+  .registration_form
+    display: flex
+    justify-content: center
+    max-width: 360px
+    margin: 0 auto
+    
+    .form_registration_field
+      padding-top: 15px
+      padding-bottom: 10px
+      max-width: 360px
+      .field_label
+        margin-bottom: 4px
+        label
+          font-size: 14px
+          font-weight: 600
+          
+      .field_label_inline
+        padding-top: 4px
+        display: flex
+        align-items: center
+        flex-wrap: wrap
+        .profile_setting_role
+          display: block
+          width: 100%
+          margin-right: 16px
+          > input
+            width: 20px
+        @media (max-width: 768px)
+          .profile_setting_inline_input
+            display: block
+            .profile_setting_role
+              margin-bottom: 12px
+        
+      .inline_field_radio
+        display: flex
+        justify-content: center
+        padding-top: 12px
+        position: relative
+        .field_input
+          .registration_role
+            input[type=radio]
+              position: absolute
+              clip: rect(0,0,0,0)
+              pointer-events: none
+              
+          .registration_role_box
+            width: 135px
+            padding-top: 8px
+            padding-bottom: 8px
+            text-align: center
+            border: 1px solid $color_darkgrey
+            color: $color_darkgrey
+            &.input_client
+              border-top-left-radius: 2px
+              border-bottom-left-radius: 2px
+
+            &.input_creator
+              border-top-right-radius: 2px
+              border-bottom-right-radius: 2px
+              border-left: none 
+            
+            &#active
+              border: 1px solid $color_red !important
+              color: $color_red
+              background-color: rgba(229, 0, 45, 0.10)
+            
+        
+      .inline_field_input
+        display: flex
+        justify-content: center
+        .field_input:first-child
+          padding-right: 8px        
+          
+      input
+        border: 1px solid $color_grey
+        padding: 8px 12px
+        width: 100%
+        border-radius: 2px
+        &:focus
+          outline: 0
+          
+    .form_registration_next_button
+      text-align: center
+      margin: 24px 0
+      .form_registration_next
+        width: 180px
+        background-color: $color_red
+        color: $color_white
+        border-radius: 4px
+        padding-top: 8px
+        padding-bottom: 8px
+        font-size: 14px
+        &:focus
+          outline: 0 !important
+        input
+          background-color: $color_red
+          cursor: pointer
+          &:focus
+            outline: 0 !important
+        
+    div.form_registration_alternatives
+      div.form_registration_alternatives_txt
+        text-align: center
+        font-weight: 500
+        font-style: italic
+      div.form_registration_via_sns
+        padding-top: 18px 
+        display: flex
+        justify-content: center
+        align-items: center
+        div.form_registration_sns_icon
+          padding: 4px 6px
+    
+    .form_registration_login_link
+      text-align: center
+  
+  .policy_accept
+    padding-top: 15px
+    label
+      display: flex
+      align-items: center
+      justify-content: center
+      .policy_label_link
+        display: flex
+        padding-left: 8px
+        font-size: 12px
+        margin-top: 2px
+        @media (max-width: 560px)
+          font-size: 8px
+        a
+          color: $color_red
+          
+  .registration_modal_button
+    justify-content: center
+    display: flex
+    margin-top: 24px
+    input
+      background-color: $color_red
+      color: $color_white
+      width: 180px
+      padding-top: 8px
+      padding-bottom: 8px
+      border-radius: 3px
+      font-size: 14px
+      cursor: pointer
+      &:focus
+        outline: 0
+        
+  .form_registration_back
+    justify-content: center
+    display: flex
+    margin-top: 24px
+    input
+      background-color: $color_white
+      color: $color_red
+      width: 180px
+      padding-top: 8px
+      padding-bottom: 8px
+      border-radius: 3px
+      font-size: 14px
+      cursor: pointer
+      &:focus
+        outline: 0
+    

@@ -1,0 +1,45 @@
+section
+  div.section_search
+    div.seach_question_box
+      = form_for @subcategory, url: budget_createteams_categories_path(:id), method: :get do |f|
+        div.question_box_content
+          div.question_innerbox
+            div.question_box_title
+              h2.question_box_title_txt プロジェクトの開始時期はいつ頃ですか？
+
+            div.question_box_options
+              div.question_box_options_items
+                label.question_box_label
+                  = f.radio_button :id, "1" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Date_soon.png", width: 90)
+                    h4.box_options_item_txt 今すぐ
+                label.question_box_label
+                  = f.radio_button :id, "2" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Date_after1.png", width: 90)
+                    h4.box_options_item_txt 1ヶ月以内
+                label.question_box_label
+                  = f.radio_button :id, "3" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Date_1over.png", width: 90)
+                    h4.box_options_item_txt 1ヶ月以上先
+                label.question_box_label
+                  = f.radio_button :id, "4" do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/search/Common_other.png", width: 90)
+                    h4.box_options_item_txt 未定
+
+        div.question_box_commands
+          div.box_commands_space
+            = link_to createteams_category_path(:id), method: :get
+              div.question_box_command_back
+                button.question_box_command_back_txt
+                  = t 'back'
+            div.question_box_command_next
+              button.question_box_command_next_txt
+                = t 'next'

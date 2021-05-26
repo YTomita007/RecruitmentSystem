@@ -1,0 +1,39 @@
+@import "components/colors.sass"
+
+.public_info_tag
+  background-color: $color_red
+  color: $color_white
+  font-size: 9px
+  font-weight: 500
+  border-radius: 3px 0 0 3px
+  display: inline-block
+  height: 16px
+  line-height: 16px
+  padding: 0 6px 0 16px
+  position: relative
+  margin-left: 16px
+  text-decoration: none
+
+  &::after
+    background: $color_white
+    border-radius: 10px
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25)
+    content: ''
+    height: 4px
+    left: 8px
+    position: absolute
+    width: 4px
+    top: 6px
+
+  &::before
+    background: $color_white
+    border-bottom: 8px solid transparent
+    border-right: 8px solid $color_red
+    border-top: 8px solid transparent
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    
+    
+    

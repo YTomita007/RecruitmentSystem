@@ -1,0 +1,63 @@
+@import "components/colors.sass"
+
+.message_alert
+  transition: 1s
+  position: absolute
+  top: -100px
+  width: 100%
+  left: 0
+  z-index: 100
+  
+  .message_alert_positive
+    .message_alert_content
+      background-color: $color_lightgreen
+      border: 2px solid $color_green
+      border-radius: 4px
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      max-width: 484px
+      margin: 0 auto
+      padding: 14px
+      .message_alert_check_icon
+        width: 20px
+      
+      .message_alert_txt
+        h3.message_alert_display_txt
+          color: $color_green
+          font-size: 18px
+          padding-left: 16px
+          
+      .message_alert_close_icon      
+        margin-left: auto
+        margin-right: 0
+        cursor: pointer
+
+  .message_alert_danger
+    .message_alert_content
+      background-color: $color_pink
+      border: 2px solid $color_red
+      border-radius: 4px
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      max-width: 484px
+      margin: 0 auto
+      padding: 14px
+      .message_alert_check_icon
+        width: 20px
+      
+      .message_alert_txt
+        h3.message_alert_display_txt
+          color: $color_red
+          font-size: 18px
+          padding-left: 16px
+          
+      .message_alert_close_icon      
+        margin-left: auto
+        margin-right: 0
+        cursor: pointer
+  
+    
+    
+    

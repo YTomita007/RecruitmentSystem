@@ -1,0 +1,42 @@
+doctype html
+html
+  head lang="ja"
+    <!-- /jQueryを読み込む -->
+    script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    <!-- IEのpolyfill -->
+    javascript:
+      if (/MSIE/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent)){
+        // Old browser
+        (function(d) {
+        ns = d.createElement("script"), 
+        s = d.getElementsByTagName("script")[0];
+        ns.src = 'https://polyfill.io/v3/polyfill.min.js';
+        s.parentNode.insertBefore(ns, s)}
+        )(document);
+      };
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    script src="https://www.googletagmanager.com/gtag/js?id=UA-138510404-1" async=""
+    javascript:
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-138510404-1');
+
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    title workeasy
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'false'
+    = javascript_include_tag "application"
+    = favicon_link_tag ('/assets/favicon.ico')
+  body
+    div.container data-turbolinks="false"
+
+      = render 'layouts/head'
+
+      main
+        div.main
+          = yield
+
+        = render 'layouts/footer'

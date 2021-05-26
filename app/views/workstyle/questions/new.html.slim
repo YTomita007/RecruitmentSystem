@@ -1,0 +1,30 @@
+section
+  div.section_search
+    div.seach_question_box
+      div.question_box_content
+        div.question_innerbox
+          div.question_box_logo
+           = link_to image_tag("/assets/cherry.svg", width: 45)
+          div.question_box_title.start_panel
+            h2.question_box_title_txt あなたの働き方のこだわりを診断しよう！
+            p.question_box_subtitle_english Let's check your work style !!
+          div.question_box_options
+            div.question_box_description
+              p.question_box_description_text  働き方について簡単な質問に答えていくと
+              | 回答結果をもとに分析し、あなたが思っている働き方がわかります。
+            div.question_box_start_search
+              = link_to step1_new_workstyle_question_path, data: {"turbolinks" => false} do
+                button.start_search はじめる
+          div.sns_logos
+            div.twitter_logo
+              a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdeveloper.twitter.com%2Fen%2Fdocs%2Ftwitter-for-websites%2Ftweet-button%2Foverview&amp;ref_src=twsrc%5Etfw&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fworkeasy.jp" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"
+                = image_tag("/assets/twitter.svg", width: 45)
+            div.instagram_logo
+              a href="https://www.instagram.com/workeasy_/" target="_blank"
+                = image_tag("/assets/instagram.svg", width: 45)
+            div.line_logo
+              a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fworkeasy.jp" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"
+                = image_tag("/assets/line.svg", width: 45)
+            div.facebook_logo
+              a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fworkeasy.jp&picture=https%3A%2F%2Fworkeasy.jp%2Fassets%2Fimg%2Fogp_creator.png" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"
+                = image_tag("/assets/facebook.svg", width: 45)

@@ -1,0 +1,227 @@
+@import "components/colors.sass"
+
+.user_profile_setting
+  max-width: 1280px
+  margin: 0 auto
+  display: flex
+  justify-content: center
+  .user_profile_setting_container
+    max-width: 810px
+    width: 100%
+    .profile_setting_container_box
+      background-color: $color_white
+      border: 1px solid rgba(0, 0, 0, 0.12)
+      border-radius: 4px
+      margin-bottom: 32px
+      .profile_setting_box_head
+        padding: 16px 32px
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12)
+        .profile_setting_box_head_items
+          display: flex
+          justify-content: flex-start
+          align-items: center
+          .profile_setting_box_head_title
+            h2.profile_setting_box_head_title_txt
+              font-size: 18px
+              font-weight: 600
+              display: flex
+              align-items: center
+          .profile_setting_box_head_buttons
+            margin-left: auto
+            margin-right: 0
+            display: flex
+            @media (max-width: 560px)
+              display: block
+          .profile_setting_box_head_button
+            margin-left: auto
+            margin-right: 0
+            input[type="submit"]
+              min-width: 140px
+              border-radius: 2px
+              padding: 8px 12px
+              cursor: pointer
+              border: 1px solid $color_red
+              background-color: $color_red
+              color: $color_white
+            button.profile_setting_edit
+              min-width: 140px
+              border-radius: 2px
+              padding: 8px 12px
+              cursor: pointer
+              border: 1px solid $color_red
+              background-color: $color_white
+              color: $color_red
+              margin-right: 20px
+
+      .profile_setting_box_body
+        padding: 16px 32px
+        .profile_setting_box_body_items
+          .profile_setting_box_body_item
+            padding: 12px 0
+            
+            .profile_setting_item_schedule
+              .profile_setting_item_schedule_label
+                display: flex
+                align-items: center
+            
+            .profile_setting_item_hourly_rate_label
+                display: flex
+                align-items: center
+            
+            .profile_setting_item_skill
+              ul.skill_list
+                li.skill_list_item
+                  padding-top: 8px
+                  padding-bottom: 8px
+                  font-size: 14px
+                  background: #41b883
+                  color: $color_white
+                  border-radius: 2px
+                  margin-right: 6px
+
+            .profile_setting_input
+              padding-top: 4px
+              max-width: 360px
+              width: 100%
+
+              textarea
+                border: 1px solid $color_darkgrey
+                resize: none
+                padding: 12px
+                border-radius: 4px
+                height: 200px
+                width: 100%
+                color: $color_black
+
+              input
+                width: 100%
+                padding-top: 8px
+                padding-bottom: 8px
+                padding-left: 8px
+                text-align: left
+                border-radius: 2px
+                border: 1px solid $color_darkgrey
+                color: $color_black
+
+              .profile_setting_website
+                margin-top: 24px
+                margin-bottom: 12px
+
+            .profile_setting_toadd
+              text-align: center
+              background-color: $color_white
+              border: 1px solid $color_red
+              color: $color_red
+              border-radius: 2px
+              padding: 4px 19.5px
+              width: 100px
+            .profile_setting_todelete
+              background-color: $color_red
+              padding: 4px 12px
+              width: 100px
+              border-radius: 2px
+              text-align: center
+              color: $color_white
+              margin-bottom: 35px
+              margin-top: 14px
+
+
+            .profile_setting_inline_input
+              padding-top: 4px
+              display: flex
+              align-items: center
+              flex-wrap: wrap
+              .profile_setting_role
+                display: flex
+                justify-content: flex-start
+                align-items: center
+                margin-right: 16px
+                > input
+                  width: 20px
+
+              .profile_setting_inline_birthday,
+              .profile_setting_inline_licdate
+                select
+                  padding-top: 8px
+                  padding-bottom: 8px
+                  padding-left: 8px
+                  text-align: left
+                  border-radius: 2px
+                  border: 1px solid $color_darkgrey
+                  background: $color_white
+                  background-image: url('select.png')
+                  background-position: center right
+                  background-size: contain
+                  background-repeat: no-repeat
+                  -webkit-appearance: none
+                  -moz-appearance: none
+                  appearance: none
+                  &::-ms-expand
+                    display: none
+                  &:first-child
+                    min-width: 115px
+                  &:not(:first-child)
+                    min-width: 82px
+                .infra_select
+                  padding-left: 8px
+                  padding-right: 4px
+
+              .field_radio_input
+                label.registration_availability,
+                label.registration_gender
+
+                  input[type=radio]
+                    position: absolute
+                    clip: rect(0,0,0,0)
+                    pointer-events: none
+                  .setting_availability_box
+                    width: 135px
+                    padding-top: 8px
+                    padding-bottom: 8px
+                    text-align: center
+                    border: 1px solid $color_darkgrey
+                    color: $color_black
+                    &.available
+                      border-top-left-radius: 2px
+                      border-bottom-left-radius: 2px
+
+                    &.unavailable
+                      border-top-right-radius: 2px
+                      border-bottom-right-radius: 2px
+                      border-left: none
+
+                    &#active
+                      border: 1px solid $color_red !important
+                      color: $color_red
+                      background-color: rgba(229, 0, 45, 0.10)
+
+            input
+              padding-top: 8px
+              padding-bottom: 8px
+              padding-left: 8px
+              text-align: left
+              border-radius: 2px
+              border: 1px solid $color_darkgrey
+              color: $color_black
+              &:first-child
+                margin-right: 8px
+
+              &.custom_input
+                background: #fff
+                min-width: 160px
+                &[type=number]
+                  -moz-appearance: textfield
+                  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
+                    -webkit-appearance: none
+                    -moz-appearance: none
+                    appearance: none
+                    margin: 0
+
+small.required_field_mark
+  display: inline-block
+  vertical-align: middle
+  color: $color_red
+  font-size: 10px
+  margin-bottom: 10px
+  margin-left: 6px
+  font-weight: 100  

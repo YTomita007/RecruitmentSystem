@@ -1,0 +1,115 @@
+div.user_profile_setting
+  div.user_profile_setting_container
+    = nested_form_for @project, url: users_project_path do |f|
+      div.profile_setting_form
+        div.profile_setting_container_box
+          div.profile_setting_box_head
+            div.profile_setting_box_head_items
+              div.profile_setting_box_head_title
+                h2.profile_setting_box_head_title_txt プロジェクトの詳細
+              div.profile_setting_box_head_buttons                
+                div.profile_setting_box_head_button
+                  = link_to users_project_path(@project) do
+                    button.profile_setting_edit data-turbolinks="true" 編集をやめる
+                div.profile_setting_box_head_button
+                  button.profile_setting_save type="submit"
+                    = f.submit t('update')
+
+          div.profile_setting_box_body
+            div.profile_setting_box_body_items
+              div.profile_setting_box_body_item
+                div.profile_setting_item_name
+                  div.profile_setting_item_name_label
+                    label.name_label_fullname プロジェクト名称
+                  div.profile_setting_inline_input
+                    = f.text_field :title
+
+                  div.profile_setting_item_birthday
+                    div.profile_setting_item_birthday_label
+                      label.name_label_birthday クライアント名称
+                    div.profile_setting_inline_input
+                      div.profile_setting_inline_birthday
+                        - if @client
+                          = @client.username
+
+                  div.profile_setting_item_birthday
+                    div.profile_setting_item_birthday_label
+                      label.name_label_birthday プロジェクトの種類
+                    div.profile_setting_inline_input
+                      div.profile_setting_inline_birthday
+                        = @team.genre
+
+                  = f.fields_for :team, value: @project.id do |d|
+                    div.profile_setting_box_body_item
+                      div.profile_setting_item_telephone
+                        div.profile_setting_item_telephone_label
+                          label.name_label_telephone 週の稼働時間（日）
+                        div.profile_setting_input
+                          = d.select :frequency, ['1', '2', '3', '4', '5', '6', '7'], {include_blank: '--'}
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_name
+                    div.profile_setting_item_name_label
+                      label.name_label_fullname プロジェクト開始日
+                    div.profile_setting_inline_input
+                      div.field_radio_input
+                        label.registration_gender
+                          = f.date_select :beginning, prefix:'beginning', prompt:"--", use_month_numbers:true, start_year:Time.now.year, end_year:2000
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_name
+                    div.profile_setting_item_name_label
+                      label.name_label_fullname プロジェクト詳細内容
+                    div.profile_setting_inline_input
+                      = f.text_area :description
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_name
+                    div.profile_setting_item_name_label
+                      label.name_label_fullname プロジェクト状況
+                    div.profile_setting_inline_input
+                      div.field_radio_input
+                        label.project_box_label
+                          = f.radio_button :status, 1 do
+                          div.admin_team_box_options_item
+                            h4.project_item_txt 商談中
+
+                        label.project_box_label
+                          = f.radio_button :status, 2 do
+                          div.admin_team_box_options_item
+                            h4.project_item_txt 準備中
+
+                        label.project_box_label
+                          = f.radio_button :status, 3 do
+                          div.admin_team_box_options_item
+                            h4.project_item_txt 進行中
+
+
+      div.back_button_center
+        a href="#" onclick="biskett();return false;"
+          button.start_search プロジェクトを終了させる
+
+javascript:
+  var newwindow;
+      var intId;
+      function biskett(){
+          var  screenX    = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft,
+               screenY    = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop,
+               outerWidth = typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth,
+               outerHeight = typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22),
+               width    = 500,
+               height   = 270,
+               left     = parseInt(screenX + ((outerWidth - width) / 2), 10),
+               top      = parseInt(screenY + ((outerHeight - height) / 2.5), 10),
+               features = (
+                  'width=' + width +
+                  ',height=' + height +
+                  ',left=' + left +
+                  ',top=' + top
+                );
+
+          newwindow=window.open('https://biskett.me/workeasy/45min','biskett_workeasy',features);
+
+         if (window.focus) {newwindow.focus()}
+        return false;
+      }

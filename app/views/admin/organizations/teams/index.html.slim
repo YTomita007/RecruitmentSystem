@@ -1,0 +1,77 @@
+div.admin_user_page_box
+  div.admin_user_page_box_container
+    div.admin_user_page_box_title
+      h2.admin_user_page_box_title_txt 編成チーム一覧
+    div.admin_user_page_box_container_operation
+      #example_wrapper.dataTables_wrapper.form-inline.dt-bootstrap
+        table#project_list.display.dataTable aria-describedby="project_list_info" cellspacing="0" role="grid" style=("width: 100%;") width="100%" 
+          thead
+            tr role="row" 
+              th.sorting_desc aria-controls="project_list" aria-label=("チーム番号") colspan="1" rowspan="1" style=("width: 45px;") tabindex="0"  チーム番号
+              th.sorting aria-controls="project_list" aria-label=("プロジェクト名称") aria-sort="descending" colspan="1" rowspan="1" tabindex="0"  プロジェクト名称
+              th.sorting aria-controls="project_list" aria-label=("メールと電話番号") colspan="1" rowspan="1" tabindex="0"  予算感
+              th.sorting aria-controls="project_list" aria-label=("職種タグ") colspan="1" rowspan="1" tabindex="0"  E名
+              th.sorting aria-controls="project_list" aria-label=("登録日時") colspan="1" rowspan="1" tabindex="0"  プロジェクト状態
+              th.sorting aria-controls="project_list" aria-label=("アカウントステタス") colspan="1" rowspan="1" tabindex="0"  チーム詳細
+              th.sorting aria-controls="project_list" aria-label=("アカウントステタス") colspan="1" rowspan="1" tabindex="0"  削除
+          tbody
+            - @team.each_with_index do |team, i|
+              tr role="row" 
+                td.sorting_1 
+                  = team.id
+                td 
+                  = @project[i].title
+                td
+                  = "¥" + team.budget.to_s(:delimited)
+                td
+                  - if @client[i].blank?
+                    | 顧客情報なし
+                  -else
+                    = @client[i].username
+                td
+                  - if @project[i].status == 1
+                    span.project_negotiation 商談中
+                  - elsif @project[i].status == 2
+                    span.project_prepared 準備中
+                  - elsif @project[i].status == 3
+                    span.project_progress 進行中
+                  - else
+                    span.project_complete 完了済
+                  = link_to edit_admin_organizations_team_path(team)
+                    = I18n.t('.edit')
+                td
+                  = link_to admin_organizations_team_path(team)
+                    = I18n.t('.show')
+                td
+                  = link_to admin_organizations_team_path(team), method: :delete, data: { confirm: "削除しますか？" }
+                    div.admin_team_box_table_command
+                      button.admin_team_box_table_command_txt　✖︎
+
+    div.admin_user_box_options_items
+      = link_to admin_root_path
+        div.admin_user_box_options_command
+          button.admin_user_box_options_command_txt
+            = '管理画面トップへ戻る'
+              
+            
+      link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" /
+      javascript:
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+      script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" 
+      script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js" 
+      javascript:
+        $(document).ready(function() {
+          var table=$('#project_list').DataTable( {
+            dom: 'Bfrtip',
+            "paging": false,
+            "bInfo": false,
+            buttons: [{
+              exportOptions: {
+                modifier: {
+                  page: 'off'}
+                }
+              }]
+            });
+        });

@@ -1,0 +1,65 @@
+div.user_profile_setting
+  div.user_profile_setting_container
+    = nested_form_for @user, url: users_availability_path do |f|
+      div.profile_setting_form
+        div.profile_setting_container_box#availability_box
+          div.profile_setting_box_head
+            div.profile_setting_box_head_items
+              div.profile_setting_box_head_title
+                h2.profile_setting_box_head_title_txt
+                 | 稼働ステータス
+                 small.required_field_mark ※
+                 span.public_info_tag 公開されます 
+              div.profile_setting_box_head_buttons                
+               div.profile_setting_box_head_button
+                 = link_to users_setting_path(@current_user) do
+                   button.profile_setting_edit data-turbolinks="true" 前の画面へ戻る
+               div.profile_setting_box_head_button
+                 button.profile_setting_save type="submit"
+                   = f.submit t('update')
+
+          div.profile_setting_box_body
+            div.profile_setting_box_body_items
+              = f.fields_for :detail, value: @user do |d|
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_availability
+                    div.profile_setting_item_availability_label
+                      label.name_label_availability 稼働状況
+                    div.profile_setting_inline_input
+                      div.field_radio_input
+                        label.registration_availability
+                          - if @user.detail.availability == true
+                            = d.radio_button :availability, true do
+                            div.setting_availability_box.available#active
+                              h4.availability_txt 稼働可能
+                          - else
+                            = d.radio_button :availability, true do
+                            div.setting_availability_box.available
+                              h4.availability_txt 稼働可能
+
+                      div.field_radio_input
+                        label.registration_availability
+                          - if @user.detail.availability == false
+                            = d.radio_button :availability, false do
+                            div.setting_availability_box.unavailable#active
+                              h4.availability_txt 稼働不可能
+                          - else
+                            = d.radio_button :availability, false do
+                            div.setting_availability_box.unavailable
+                              h4.availability_txt 稼働不可能
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_schedule
+                    div.profile_setting_item_schedule_label
+                      label.name_label_schedule 稼働可能時間
+                    div.profile_setting_inline_input
+                      = d.number_field :schedule, max: "100", min: "0", class: "custom_input"
+                      p.schedule_txt 時間 / 週
+
+                div.profile_setting_box_body_item
+                  div.profile_setting_item_hourly_rate
+                    div.profile_setting_item_hourly_rate_label
+                      label.name_label_hourly_rate 希望単価
+                    div.profile_setting_inline_input
+                      = d.number_field :hourly_rate, max: "100000", min: "0", class: "custom_input"
+                      p.hourly_rate_txt 円 / 時間

@@ -1,0 +1,41 @@
+div.category_page_box
+  div.category_page_box_container
+    div.category_page_box_container_operation
+      div.category_container_operation_head
+        div.category_container_operation_side
+          div.category_container_operation_title
+            h3.category_container_operation_title_txt.initialize workeasy管理者画面
+
+      div.section_category
+        div.category_box
+          div.category_box_content
+            div.category_box_options
+              div.category_box_title
+                h2.category_box_title_txt カテゴリ情報詳細
+
+              div.table-responsive.category_box_tables
+                table.category_box_options_table
+                  = form_for :category, url: admin_masters_category_path, method: :patch do |f|
+                    thead
+                      tr.bg-info
+                        th.category_box_options_items_head = "カテゴリ分類"
+                        th.category_box_options_items_head = "カテゴリ名称"
+                        th.category_box_options_items_head = "カテゴリ補助情報"
+                    tbody
+                      td.category_box_options_items_body
+                        = f.select :number, [['ウェブ', 1], ['アプリ', 2], ['その他', 3]]
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :title
+                      td.category_box_options_items_body
+                        div.category_box_title_table_text
+                        = f.text_field :description
+                    div.category_decide_button_command
+                      button.category_decide_button
+                        = f.submit t('update')
+
+              div.category_box_options_items
+                = link_to admin_masters_categories_path
+                  div.category_box_options_command
+                    button.category_box_options_command_txt
+                      = '一覧へ戻る'

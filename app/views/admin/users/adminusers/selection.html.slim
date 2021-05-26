@@ -1,0 +1,26 @@
+div.user_profile_setting
+  div.user_profile_setting_container
+    = form_for @user, method: :get, url: default_admin_users_adminusers_path(@user) do |f|
+      div.profile_setting_form
+        div.profile_setting_container_box#skills_box
+          div.profile_setting_box_head
+            div.profile_setting_box_head_items
+              div.profile_setting_box_head_title
+                h2.profile_setting_box_head_title_txt
+                 | 初期化したいユーザを選んでください
+                 br
+                 |（テスト用のユーザのみにしてください）
+              div.profile_setting_box_head_button
+                = link_to admin_users_adminusers_path do
+                  button.profile_setting_edit data-turbolinks="true" 初期化を中止する
+              div.profile_setting_box_head_button
+                button.profile_setting_save
+                  .actions
+                    = f.submit t('update')
+
+          div.profile_setting_box_body
+            div.profile_setting_box_body_items
+              div.profile_setting_box_body_item
+                div.profile_setting_item_skill
+                  div.profile_setting_input
+                    = f.collection_select :id, @alluser, :id, :username

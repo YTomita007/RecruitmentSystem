@@ -1,0 +1,41 @@
+section
+  div.section_search
+    div.seach_question_box
+      = form_for @subcategory, url: budget_createteams_categories_path(:id), method: :get do |f|
+        div.question_box_content
+          div.question_innerbox
+            div.question_box_title
+              h2.question_box_title_txt サブカテゴリは何ですか？
+              p.question_box_subtitle_txt
+                span.red = @category[0].classification
+                | のサブカテゴリを表示しています
+
+            div.question_box_options
+              div.question_box_options_items
+                - @category.each_with_index do |category, i|
+                  label.question_box_label.tooltiped
+                    div.tooltiped_content
+                      span.tooltipedtext = @category[i].description
+                    = f.radio_button :id, @category[i].id do
+                    div.question_box_options_item
+                      div.question_box_logo
+                        = image_tag("/assets/cherry.svg", width: 35, style: "padding: 25px 0")
+                      h4.box_options_item_txt
+                        = category.title
+                label.question_box_label
+                  = f.radio_button :id, 0 do
+                  div.question_box_options_item
+                    div.question_box_logo
+                      = image_tag("/assets/cherry.svg", width: 35, style: "padding: 25px 0")
+                    h4.box_options_item_txt 的確に選べない
+
+
+        div.question_box_commands
+          div.box_commands_space
+            = link_to createteams_categories_path, method: :get
+              div.question_box_command_back
+                button.question_box_command_back_txt
+                  = t 'back'
+            div.question_box_command_next
+              button.question_box_command_next_txt
+                = t 'next'

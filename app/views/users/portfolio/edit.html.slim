@@ -1,0 +1,85 @@
+div.user_profile_setting
+  div.user_profile_setting_container
+    = nested_form_for @user, url: users_portfolio_path do |f|
+      div.profile_setting_form
+        div.profile_setting_container_box#portfolio_box
+          div.profile_setting_box_head
+            div.profile_setting_box_head_items
+              div.profile_setting_box_head_title
+                h2.profile_setting_box_head_title_txt
+                 | ポートフォリオ
+                 span.public_info_tag 公開されます
+              div.profile_setting_box_head_buttons
+                div.profile_setting_box_head_button
+                  = link_to users_setting_path(@current_user) do
+                    button.profile_setting_edit data-turbolinks="true" 前の画面へ戻る
+                div.profile_setting_box_head_button
+                  button.profile_setting_save type="submit"
+                    = f.submit t('update'), onclick: "return loading();"
+
+          div.profile_setting_box_body
+            div.profile_setting_box_body_items
+              div.profile_setting_box_body_item
+                - if @paperclip.nil?
+                  = f.fields_for :paperclip, value: @user do |pap|
+                    div.split_div
+                      div.profile_portfolios_left
+                        div.profile_setting_portfolio_upload
+                          object width="250"
+
+                      div.profile_portfolios_right
+                        div.profile_setting_input
+                          div.profile_setting_portfolio_upload
+                            = pap.file_field :image, class: "inputfile files", accept: ".png, .jpeg, .jpg, .pdf", id: "file-1", style: "width:auto"
+
+                            label for="file-1"
+                              strong
+                                = image_tag("/assets/add.svg", width: 14)
+                                | ファイル追加
+                              span
+
+                        div.profile_setting_input
+                          div.profile_setting_website
+                            = pap.url_field :link, placeholder: "URLを入力"
+
+                - else
+                  div.split_div
+                    div.profile_portfolios_left
+                      div.profile_setting_portfolio_upload
+                        = content_tag :object, width: '350', data: @portfolio do
+                      div.profile_setting_input
+                        div.profile_setting_website
+                          = link_to @user.paperclip.link, @user.paperclip.link, target: '_blank'
+
+                    div.profile_portfolios_right
+                      | ポートフォリオデータを変更する場合は
+                      br
+                      | こちらから再度アップロードしてください。
+                      = f.fields_for :paperclip, value: @user do |pap|
+                        div.profile_setting_input
+                          div.profile_setting_portfolio_upload
+                            = pap.file_field :image, class: "inputfile files", accept: ".png, .jpeg, .jpg, .pdf", id: "file-7", style: "width:auto"
+
+                            label for="file-7"
+                              strong
+                                = image_tag("/assets/add.svg", width: 14)
+                                | ファイル追加
+                              span
+
+
+                        div.profile_setting_input
+                          div.profile_setting_website
+                            = pap.url_field :link, placeholder: "URLを入力"
+
+                        div.profile_setting_input
+                          div.profile_setting_todelete
+                            = pap.link_to_remove t('destroy')
+
+                - if @paperclip.nil?
+                  = f.link_to_add t('add'), :paperclip, class: "profile_setting_toadd", onclick: "return hidebtn();"
+
+              div.upload_info_details
+                ul.upload_info_limitation
+                  li.upload_info_limitation_item ファイルサイズ20MB以下
+                  li.upload_info_limitation_item pdf/jpg/jpeg/pngのみ
+                  li.upload_info_limitation_item 一度登録しても何度でも変更できます。

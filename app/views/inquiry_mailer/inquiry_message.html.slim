@@ -1,0 +1,70 @@
+div style="cursor: auto; font-size: 12px; text-align: left; padding: 15px; line-height: 1.5;"
+  p
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    | 　　　　　　新規問い合わせがありました　　
+    br/
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    br/
+  p
+    - if !@username.nil?
+      | 氏名：
+      = @username + "様"
+      
+    - else
+      | 会社名：
+      = @company + " 御中"
+      br/
+      br/
+      | 担当者名：
+      = @current_position + " 様"
+      br/
+      br/
+      | ふりがな：
+      = @furigana
+      
+    br/
+    br/
+    | 電話番号：
+    = @telephone
+    br/
+    br/
+    | メールアドレス：
+    = @email
+    br/
+    br/
+    - if !@title.nil?
+      | 題名：
+      = @title
+      br/
+      br/
+      | お問い合わせ内容：
+      br/
+      = @description
+      
+    - else
+      | お申込みの理由：
+      - case
+        - when @reason === "1"
+          | アイデアを磨いてもらいたい
+        - when @reason === "2"
+          | プロトタイププランを考えている
+        - when @reason === "3"
+          | まずは話を聞いてみたい
+        - when @reason === "4"
+          | その他
+        - else
+          | 指定してない
+  p
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    br/
+    | workeasy 株式会社｜workeasy運営事務局
+    br/
+    | （旧株式会社ライジングアドバンス）
+    br/
+    | Mail: info@workeasy.jp
+    br/
+    = link_to @signature, @signature
+    br/
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━

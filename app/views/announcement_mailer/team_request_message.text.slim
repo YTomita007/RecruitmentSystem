@@ -1,0 +1,46 @@
+div style="cursor: auto; font-size: 12px; text-align: left; padding: 15px; line-height: 1.5;"
+  p
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    | 　　　　　　　　　チーム作成の新規相談者です　　　　
+    br/
+    | －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    br/
+    br/
+  p
+    | 会社名：
+    = User.find_by(email: @email).detail.company
+    br/
+    br/
+    | 氏名：
+    = User.find_by(email: @email).username + "様"
+    br/
+    br/
+    | ローマ字：
+    = User.find_by(email: @email).english_name + "様"
+    br/
+    br/
+    | メールアドレス：
+    = User.find_by(email: @email).email
+    br/
+    br/
+    | 電話番号：
+    = User.find_by(email: @email).detail.telephone
+    br/
+    br/
+    | 対象のチームNo：
+    = Team.find_by(id: @team.id).id
+    br/
+    br/
+  p
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    br/
+    | workeasy 株式会社｜workeasy運営事務局
+    br/
+    | （旧株式会社ライジングアドバンス）
+    br/
+    | Mail: info@workeasy.jp
+    br/
+    = link_to @signature, @signature
+    br/
+    | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1,0 +1,98 @@
+@import "components/colors.sass"
+
+.profile_setting_cv
+  &:not(:first-child)
+    padding-bottom: 24px
+  .profile_setting_cv_title
+    h4.profile_setting_cv_title_txt
+      font-size: 18px
+      padding-bottom: 24px
+  .profile_setting_cv_period
+    border-left: 5px solid $color_grey
+    padding-left: 24px
+    padding-bottom: 32px
+    font-size: 14px
+    .profile_setting_cv_period_tag
+      padding-bottom: 12px
+      p.profile_setting_cv_period_tag_txt
+        color: $color_black
+        font-size: 14px
+    .profile_setting_cv_period_time
+      display: flex
+      justify-content: flex-start
+      flex-wrap: wrap
+      align-items: center
+      padding-bottom: 12px
+
+
+    .profile_setting_inline_period_start,
+    .profile_setting_inline_period_end
+      select
+        padding-top: 8px
+        padding-bottom: 8px
+        padding-left: 8px
+        text-align: left
+        border-radius: 2px
+        border: 1px solid $color_darkgrey
+        background: #fff
+        background-image: url('select.png')
+        background-position: center right
+        background-size: contain
+        background-repeat: no-repeat
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
+        &::-ms-expand
+          display: none
+        &:first-child
+          min-width: 115px
+        &:not(:first-child)
+          min-width: 82px
+
+      .infra_select
+        padding-left: 8px
+        padding-right: 4px
+      .datepicker_half
+        background: #fff
+        background-image: url('select.png')
+        background-position: center right
+        background-size: contain
+        background-repeat: no-repeat
+        min-width: 150px
+        &::-webkit-clear-button, &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
+          display: none
+        &::-webkit-calendar-picker-indicator
+          opacity: 0
+
+    .profile_setting_cv_project_info
+      p.profile_setting_cv_project_info_txt
+        color: $color_black
+        padding-bottom: 12px
+      textarea
+        border: 1px solid $color_grey
+        resize: none
+        padding: 12px
+        border-radius: 4px
+        height: 170px
+        width: 100%
+        color: $color_black
+
+    .profile_cv_destroy
+      margin-top: 12px
+      > a
+        background-color: $color_red
+        padding: 4px 12px
+        width: 100px
+        border-radius: 2px
+        text-align: center
+        color: $color_white
+
+.profile_cv_add
+  > a
+    text-align: center
+    background-color: $color_white
+    border: 1px solid $color_red
+    color: $color_red
+    border-radius: 2px
+    padding: 4px 12px
+    width: 100px
