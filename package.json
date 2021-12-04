@@ -2,7 +2,7 @@
   "name": "app",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "5.2.1",
+    "@rails/webpacker": "5.4.3",
     "vue": "^2.6.12",
     "vue-loader": "^15.9.3",
     "vue-template-compiler": "^2.6.12"
@@ -19,9 +19,9 @@
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^10.0.2",
     "vue-style-loader": "^4.1.2",
-    "webpack": "^4.44.2",
+    "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-dev-server": "^3",
     "webpack-manifest-plugin": "^2.2.0"
   }
 }
